@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns="http://www.iec.ch/61850/2003/SCL">
+	<Header id="LaptopServer"/>
+	<IED name="LaptopServer">
+		<AccessPoint name="AP1">
+			<Server>
+				<Authentication/>
+				<LDevice inst="LD0">
+					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
+						<DataSet name="battery">
+						    <FCDA ldInst="LD0" prefix="" lnClass="LPHD" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1" daName="mag.f" fc="MX"/>
+						    
+						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" daName="stVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
+						    
+						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
+						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="LinkSt" daName="stVal" fc="ST"/>
+						</DataSet>
+						<ReportControl rptID="LD0/LLN0.RP.Events" confRev="1" buffered="false" bufTime="0" name="Events" datSet="battery">
+							<TrgOps dchg="true" qchg="true" period="false"/>
+							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" configRef="true"/>
+							<RptEnabled max="1"/>
+						</ReportControl>
+					</LN0>
+					<LN lnClass="LPHD" inst="1" lnType="LPHD_Type"/>
+					<LN lnClass="GGIO" inst="1" lnType="GGIO_Type"/>
+					
+					<LN lnClass="LCCH" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+				</LDevice>
+			</Server>
+		</AccessPoint>
+	</IED>
+	<DataTypeTemplates>
+		<LNodeType id="LLN0_Type" lnClass="LLN0">
+			<DO name="Mod" type="INC_Type"/>
+			<DO name="Beh" type="INS_Type"/>
+		</LNodeType>
+		<LNodeType id="LPHD_Type" lnClass="LPHD">
+			<DO name="PhyHealth" type="INS_Type"/>
+		</LNodeType>
+		<LNodeType id="GGIO_Type" lnClass="GGIO">
+			<DO name="AnIn1" type="MV_Type"/>
+		</LNodeType>
+		<LNodeType id="HIRSCHMANN_ETHSWITCH_LCCH" lnClass="LCCH">
+		   <DO name="Mod" type="HIRSCHMANN_ETHSWITCH_ENC_1"/>
+		   <DO name="Beh" type="HIRSCHMANN_ETHSWITCH_ENS_90-4_1"/>
+		   <DO name="ChLiv" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+		   <DO name="RedChLiv" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+		   <DO name="FerCh" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0"/>
+		   <DO name="RedFerCh" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0"/>
+		   <DO name="RxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0"/>
+		   <DO name="RedRxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0"/>
+		   <DO name="TxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0"/>
+		   <DO name="RedCfg" type="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1"/>
+		   <DO name="RedPathId" type="HIRSCHMANN_ETHSWITCH_ING_90-4_DO_0"/>
+		   <DO name="PortRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0"/>
+		   <DO name="RedPortRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0"/>
+		</LNodeType>
+
+		<LNodeType id="HIRSCHMANN_ETHSWITCH_LPCP" lnClass="LPCP">
+		   <DO name="NamPlt" type="HIRSCHMANN_ETHSWITCH_LPL_0"/>
+		   <DO name="PhyNam" type="HIRSCHMANN_ETHSWITCH_DPL_LPCP_0"/>
+		   <DO name="PhyHealth" type="HIRSCHMANN_ETHSWITCH_ENS_1"/>
+		   <DO name="RxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0"/>
+		   <DO name="TxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0"/>
+		   <DO name="FerPort" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0"/>
+		   <DO name="Mau" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0"/>
+		   <DO name="AutoNgt" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+		   <DO name="PortNam" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0"/>
+		   <DO name="PortNum" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0"/>
+		   <DO name="MauCfg" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap1" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap2" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap3" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap4" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap5" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="MauCfgCap6" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0"/>
+		   <DO name="AutoNgtCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
+		   <DO name="AdminCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
+		</LNodeType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_LPL_0" cdc="LPL" iedType="EES">
+		   <DA name="vendor" fc="DC" bType="VisString255" valKind="RO"/>
+		   <DA name="swRev" fc="DC" bType="VisString255" valKind="RO"/>
+		   <DA name="d" fc="DC" bType="VisString255"/>
+		   <DA name="lnNs" fc="EX" bType="VisString255" valKind="RO"><Val>(Tr)IEC 61850-90-4:2012</Val></DA>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_DPL_LPCP_0" cdc="DPL" iedType="EES">
+		   <DA name="vendor" fc="DC" bType="VisString255" valKind="RO"/>
+		   <DA name="model" fc="DC" bType="VisString255" valKind="RO"/>
+		   <DA name="location" fc="DC" bType="VisString255" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENC_1" cdc="ENC" iedType="EES">
+		   <DA dchg="true" name="stVal" fc="ST" bType="Enum" type="HIRSCHMANN_ETHSWITCH_ctlModel_kind" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		   <DA dchg="true" name="ctlModel" fc="CF" bType="Enum" type="HIRSCHMANN_ETHSWITCH_ctlModel_kind" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_90-4_1" cdc="ENS" iedType="EES">
+		   <DA dchg="true" name="stVal" fc="ST" bType="Enum" type="BehaviourModeKind" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_1" cdc="ENS" iedType="EES">
+		   <DA dchg="true" name="stVal" fc="ST" bType="Enum" type="HealthKind" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" cdc="SPS" iedType="EES">
+		   <DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_0" cdc="INS" iedType="EES">
+		   <DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_BCR_90-4_0" cdc="BCR" iedType="EES">
+		   <DA dchg="true" name="actVal" fc="ST" bType="INT64" valKind="RO"/>
+		   <DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
+		   <DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+		   <DA dchg="true" name="pulsQty" fc="CF" bType="FLOAT32" valKind="RO"><Val>1</Val></DA>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ENG" iedType="EES">
+		   <DA dchg="true" name="setVal" fc="SP" bType="Enum" type="ChannelRedundancyKind"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ING_90-4_DO_0" cdc="ING" iedType="EES">
+		   <DA dchg="true" name="setVal" fc="SP" bType="INT32"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ING_90-4_0" cdc="ING" iedType="EES">
+		   <DA dchg="true" name="setVal" fc="SP" bType="INT32"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" cdc="ORG" iedType="EES">
+		   <DA dchg="true" name="setSrcRef" fc="SP" bType="ObjRef"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" cdc="VSG" iedType="EES">
+		   <DA dchg="true" name="setVal" fc="SP" bType="VisString255"/>
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" cdc="SPG" iedType="EES">
+		   <DA dchg="true" name="setVal" fc="SP" bType="BOOLEAN"/>
+		</DOType>
+
+		<EnumType id="HIRSCHMANN_ETHSWITCH_ctlModel_kind">
+		   <EnumVal ord="0">status-only</EnumVal>
+		</EnumType>
+		<EnumType id="BehaviourModeKind">
+		   <EnumVal ord="1">on</EnumVal>
+		   <EnumVal ord="2">blocked</EnumVal>
+		   <EnumVal ord="3">test</EnumVal>
+		   <EnumVal ord="4">test/blocked</EnumVal>
+		   <EnumVal ord="5">off</EnumVal>
+		</EnumType>
+		<EnumType id="HealthKind">
+		   <EnumVal ord="1">Ok</EnumVal>
+		   <EnumVal ord="2">Warning</EnumVal>
+		   <EnumVal ord="3">Alarm</EnumVal>
+		</EnumType>
+		<EnumType id="ChannelRedundancyKind">
+		   <EnumVal ord="1">none</EnumVal>
+		   <EnumVal ord="2">prp</EnumVal>
+		   <EnumVal ord="3">hsr</EnumVal>
+		</EnumType>
+		<DOType id="INC_Type" cdc="INC">
+			<DA name="stVal" bType="INT32" fc="ST"/>
+			<DA name="q" bType="Quality" fc="ST"/>
+			<DA name="t" bType="Timestamp" fc="ST"/>
+		</DOType>
+		<DOType id="INS_Type" cdc="INS">
+			<DA name="stVal" bType="INT32" fc="ST"/>
+			<DA name="q" bType="Quality" fc="ST"/>
+			<DA name="t" bType="Timestamp" fc="ST"/>
+			<DA name="vendor" bType="VisString255" fc="DC"/>
+		</DOType>
+		<DOType id="MV_Type" cdc="MV">
+			<DA name="mag" bType="Struct" type="AnalogueValue_Type" fc="MX"/>
+			<DA name="q" bType="Quality" fc="MX"/>
+			<DA name="t" bType="Timestamp" fc="MX"/>
+		</DOType>
+		<DAType id="AnalogueValue_Type">
+			<BDA name="f" bType="FLOAT32"/>
+		</DAType>
+	</DataTypeTemplates>
+</SCL>
