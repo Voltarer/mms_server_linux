@@ -13,13 +13,13 @@
 ---
 
 ## 🚀 Сборка и запуск
-### Сборка
+### Автоматическая сборка
 ```bash
-mkdir build && cd build
-cmake ..
-make
+cd mms_server_linux
+chmod +x setup.sh
+sudo ./setup.sh
 ```
 ### Запуск
 ```bash
-./mms_server
+sudo ./mms_server
 ```
