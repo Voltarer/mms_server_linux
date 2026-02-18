@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/mms_server.dir/src/main.c.o CMakeFiles/mms_server.dir/src/static_model.c.o -o mms_server  /home/voltar/Документы/mms_server_linux/lib/libiec61850/build/libiec61850.a -lpthread -lrt 
