@@ -1,103 +1,74 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>      
-#include <sys/time.h>    
-#include <locale.h>
-
 #include "iec61850_server.h"
+#include "hal_thread.h"
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "dal/rtrpc/rtrpc_port.h"
+
 #include "static_model.h"
 
-extern IedModel iedModel;
+static int running = 1;
 
-uint64_t get_precise_time_ms() {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return (uint64_t)(tv.tv_sec) * 1000 + (tv.tv_usec / 1000);
-}
-
-float get_ram_load() {
-    FILE* fp = fopen("/proc/meminfo", "r");
-    if (!fp) return 0.0f;
-    long total = 0, available = 0;
-    char line[256];
-    while (fgets(line, sizeof(line), fp)) {
-        if (sscanf(line, "MemTotal: %ld kB", &total) == 1) continue;
-        if (sscanf(line, "MemAvailable: %ld kB", &available) == 1) break;
-    }
-    fclose(fp);
-    return (total > 0) ? (float)(total - available) / (float)total * 100.0f : 0.0f;
-}
-
-void init_switch_nodes(IedServer server) {
-    char objRef[100];
-    
-    for (int i = 1; i <= 7; i++) {
-        sprintf(objRef, "LD0/LCCH%d.ChLiv.stVal", i);
-        DataAttribute* chLiv = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, objRef);
-        if (chLiv) IedServer_updateBooleanAttributeValue(server, chLiv, true);
-
-        sprintf(objRef, "LD0/LCCH%d.RxCnt.actVal", i);
-        DataAttribute* rx = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, objRef);
-        if (rx) IedServer_updateInt64AttributeValue(server, rx, 0);
-
-        sprintf(objRef, "LD0/LCCH%d.TxCnt.actVal", i);
-        DataAttribute* tx = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, objRef);
-        if (tx) IedServer_updateInt64AttributeValue(server, tx, 0);
-    }
-
-    for (int i = 1; i <= 6; i++) {
-        sprintf(objRef, "LD0/LPCP%d.PhyHealth.stVal", i);
-        DataAttribute* health = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, objRef);
-        if (health) IedServer_updateInt32AttributeValue(server, health, 1);
-
-        sprintf(objRef, "LD0/LPCP%d.LinkSt.stVal", i);
-        DataAttribute* link = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, objRef);
-        if (link) IedServer_updateBooleanAttributeValue(server, link, true);
-    }
+void sigint_handler(int signalId) {
+    running = 0;
 }
 
 int main(int argc, char** argv) {
 
     IedServer iedServer = IedServer_create(&iedModel);
-    if (iedServer == NULL) {
-        printf("Ошибка: не удалось создать сервер.\n");
-        return 1;
-    }
 
     IedServer_start(iedServer, 102);
+
     if (!IedServer_isRunning(iedServer)) {
-        printf("Ошибка: сервер не запущен\n");
+        printf("Starting server failed! Exit.\n");
         IedServer_destroy(iedServer);
-        return 1;
+        exit(-1);
     }
 
-    init_switch_nodes(iedServer);
+    signal(SIGINT, sigint_handler);
 
-    printf("MMS Server запущен \n");
+    printf("MMS Server (Realtek Integrated) is running...\n");
 
-    while (1) {
-        uint64_t timestampPtr = get_precise_time_ms();
-        Timestamp iecTimestamp;
-        Timestamp_clearFlags(&iecTimestamp);
-        Timestamp_setTimeInMilliseconds(&iecTimestamp, timestampPtr);
+    while (running) {
+        /* Переменные для хранения данных от SDK */
+        rtk_port_linkStatus_t link_status;
+        rtk_port_media_t port_media;
 
-        float currentRam = get_ram_load();
-        DataAttribute* ramAttr = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, "LD0/GGIO1.AnIn1.mag.f");
-        if (ramAttr) {
-            IedServer_updateFloatAttributeValue(iedServer, ramAttr, currentRam);
-            
-            DataAttribute* ramT = (DataAttribute*)IedModel_getModelNodeByShortObjectReference(&iedModel, "LD0/GGIO1.AnIn1.t");
-            if (ramT) IedServer_updateTimestampAttributeValue(iedServer, ramT, &iecTimestamp);
+        IedServer_lockDataModel(iedServer);
+
+        /* Опрашиваем порты с 1 по 4 */
+        for (int port = 1; port <= 4; port++) {
+            /* Вызываем функцию SDK (unit 0, порт i) */
+            if (rtrpc_port_linkMedia_get(0, port, &link_status, &port_media) == 0) {
+                
+                /* PORT_LINKUP определяется библиотекой rtrpc_port.h */
+                bool isUp = (link_status == PORT_LINKUP);
+                
+                /* Обновляем значения в модели МЭК 61850 */
+                /* Мы используем GGIO1.Ind1 для 1 порта, Ind2 для 2-го и т.д. */
+                if (port == 1) IedServer_updateBooleanAttributeValue(iedServer, IED_MODEL_GenericIO_GGIO1_Ind1_stVal, isUp);
+                if (port == 2) IedServer_updateBooleanAttributeValue(iedServer, IED_MODEL_GenericIO_GGIO1_Ind2_stVal, isUp);
+                if (port == 3) IedServer_updateBooleanAttributeValue(iedServer, IED_MODEL_GenericIO_GGIO1_Ind3_stVal, isUp);
+                if (port == 4) IedServer_updateBooleanAttributeValue(iedServer, IED_MODEL_GenericIO_GGIO1_Ind4_stVal, isUp);
+
+                if (isUp) {
+                    printf("Port %d: LINK UP (Media: %d)\n", port, port_media);
+                }
+            } else {
+                /* Если SDK вернул ошибку, выводим в консоль для отладки */
+                printf("Error: Failed to get status for Port %d\n", port);
+            }
         }
 
-        printf("\r[Статус] RAM : %.2f%%", currentRam);
-        fflush(stdout);
+        IedServer_unlockDataModel(iedServer);
 
-        usleep(1000000);
+        Thread_sleep(1000); // Опрос раз в секунду
     }
 
     IedServer_stop(iedServer);
     IedServer_destroy(iedServer);
+
     return 0;
 }

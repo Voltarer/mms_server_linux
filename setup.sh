@@ -1,45 +1,27 @@
 #!/bin/bash
-
-# Останавливаем скрипт при любой ошибке
 set -e
 
-# Определяем путь к папке, где лежит сам скрипт
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+WORKSPACE_ROOT="$( cd "$PROJECT_ROOT/.." && pwd )"
 
-echo "--- 1. Очистка старых данных в $PROJECT_ROOT ---"
-rm -rf "$PROJECT_ROOT/lib/libiec61850"
-rm -rf "$PROJECT_ROOT/build"
-mkdir -p "$PROJECT_ROOT/lib"
+echo "--- 1. Создание структуры директорий ---"
+mkdir -p "$WORKSPACE_ROOT/toolchain"
 mkdir -p "$PROJECT_ROOT/build"
 
-echo "--- 2. Загрузка библиотеки ---"
-cd "$PROJECT_ROOT/lib"
-git clone --depth 1 https://github.com/mz-automation/libiec61850.git
-cd libiec61850
-rm -rf .git
-
-echo "--- 3. Сборка статической библиотеки ---"
-make
-
-# Проверка файла
-if [ -f build/libiec61850.a ]; then
-    echo ">>> Библиотека готова."
+echo "--- 2. Загрузка libiec61850 ---"
+if [ ! -d "$PROJECT_ROOT/lib/libiec61850" ]; then
+    cd "$PROJECT_ROOT/lib"
+    git clone --depth 1 https://github.com/mz-automation/libiec61850.git
+    cd libiec61850 && make
 else
-    echo "Ошибка: библиотека не собралась!"
-    exit 1
+    echo "Библиотека libiec61850 уже на месте."
 fi
 
-echo "--- 4. Сборка основного сервера ---"
-cd "$PROJECT_ROOT/build"
-cmake ..
-make
-
-echo "------------------------------------------------"
-echo "СБОРКА ЗАВЕРШЕНА УСПЕШНО!"
-echo "------------------------------------------------"
-
-# Универсальный переход в папку build для любого пользователя
-cd "$PROJECT_ROOT/build"
-
-# Запускаем новую оболочку в этой папке, чтобы пользователь там и остался
-exec bash --rcfile <(echo "cd $PROJECT_ROOT/build; PS1='\[\e[32m\]mms-project-build:\w\$ \[\e[m\]'")
+echo "---------------------------------------------------------"
+echo "ПОДГОТОВКА ЗАВЕРШЕНА!"
+echo "---------------------------------------------------------"
+echo "Инструкция для сборки под MIPS:"
+echo "1. Распакуйте компилятор в: $WORKSPACE_ROOT/toolchain/"
+echo "2. Положите папку SDK (папку include и др.) в: $PROJECT_ROOT/lib/"
+echo "3. Запустите ./build.sh"
+echo "---------------------------------------------------------"
