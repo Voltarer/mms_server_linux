@@ -1,3 +1,0 @@
-/home/voltar/Документы/mms_server_linux/build/CMakeFiles/mms_server.dir
-/home/voltar/Документы/mms_server_linux/build/CMakeFiles/edit_cache.dir
-/home/voltar/Документы/mms_server_linux/build/CMakeFiles/rebuild_cache.dir
