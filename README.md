@@ -51,6 +51,6 @@ chmod +x build.sh
 **Скачайте их со страницы [Releases](../../releases/latest):**
 
 1. **Компилятор**: `mips-buildroot-linux-uclibc.tar.xz` (распаковать в `../toolchain/`)
-2. **SDK Headers**: `sdk.tar.gz` (распаковать в `lib/sdk/`)
+2. **SDK Headers**: `sdk.tar.gz` (распаковать в `lib/`)
 
 После загрузки и распаковки ваша структура должна соответствовать описанной выше.
