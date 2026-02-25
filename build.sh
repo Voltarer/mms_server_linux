@@ -16,11 +16,13 @@ if [ ! -d "$PROJECT_ROOT/lib/sdk/include" ]; then
     exit 1
 fi
 
-# Инклуды (учитываем, что папка называется sdk)
+# Инклуды
 INCLUDES="-I$PROJECT_ROOT/lib/libiec61850/src/iec61850/inc \
           -I$PROJECT_ROOT/lib/libiec61850/src/mms/inc \
           -I$PROJECT_ROOT/lib/libiec61850/src/common/inc \
-          -I$PROJECT_ROOT/lib/libiec61850/src/hal/inc \
+          -I$PROJECT_ROOT/lib/libiec61850/src/logging \
+          -I$PROJECT_ROOT/lib/libiec61850/hal/inc \
+          -I$PROJECT_ROOT/lib/libiec61850/hal/api \
           -I$PROJECT_ROOT/lib/sdk/include \
           -I$PROJECT_ROOT/lib/sdk/system/include \
           -I$PROJECT_ROOT/src"

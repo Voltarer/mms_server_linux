@@ -8,17 +8,34 @@
 				<LDevice inst="LD0">
 					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
 						<DataSet name="battery">
-						    <FCDA ldInst="LD0" prefix="" lnClass="LPHD" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1" daName="mag.f" fc="MX"/>
-						    
-						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" daName="stVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
-						    
-						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
-						    <FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="LinkSt" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPHD" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1" daName="mag.f" fc="MX"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" daName="stVal" fc="ST"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="TxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="2" doName="ChLiv" daName="stVal" fc="ST"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="TxCnt" daName="actVal" fc="ST"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="TxCnt" daName="actVal" fc="ST"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="TxCnt" daName="actVal" fc="ST"/>
+
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="RxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="TxCnt" daName="actVal" fc="ST"/>
 						</DataSet>
 						<ReportControl rptID="LD0/LLN0.RP.Events" confRev="1" buffered="false" bufTime="0" name="Events" datSet="battery">
 							<TrgOps dchg="true" qchg="true" period="false"/>
