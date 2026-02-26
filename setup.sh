@@ -1,20 +1,40 @@
 #!/bin/bash
-set -e
 
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WORKSPACE_ROOT="$( cd "$PROJECT_ROOT/.." && pwd )"
+LIB_PATH="$PROJECT_ROOT/lib/libiec61850"
+CC_MIPS="$WORKSPACE_ROOT/toolchain/bin/mips-linux-gcc"
 
-echo "--- 1. Создание структуры директорий ---"
-mkdir -p "$WORKSPACE_ROOT/toolchain"
-mkdir -p "$PROJECT_ROOT/build"
+echo "=== Запуск настройки окружения ==="
 
-echo "--- 2. Загрузка libiec61850 ---"
-if [ ! -d "$PROJECT_ROOT/lib/libiec61850" ]; then
-    cd "$PROJECT_ROOT/lib"
-    git clone --depth 1 https://github.com/mz-automation/libiec61850.git
-    cd libiec61850 && make
+echo "Очистка старых сборок библиотеки..."
+if [ -d "$LIB_PATH" ]; then
+    cd "$LIB_PATH"
+    make clean > /dev/null 2>&1
+    cd "$PROJECT_ROOT"
+fi
+
+echo "Сборка libiec61850 под архитектуру MIPS..."
+if [ -f "$CC_MIPS" ]; then
+    cd "$LIB_PATH"
+    # Передаем наш кросс-компилятор в make
+    make CC="$CC_MIPS"
+    if [ $? -eq 0 ]; then
+        echo "✅ Библиотека успешно собрана под MIPS."
+    else
+        echo "❌ ОШИБКА сборки библиотеки."
+        exit 1
+    fi
+    cd "$PROJECT_ROOT"
 else
-    echo "Библиотека libiec61850 уже на месте."
+    echo "⚠️ Кросс-компилятор не найден..."
+
+fi
+
+# 3. Создание папки build, если её нет
+if [ ! -d "build" ]; then
+    mkdir build
+    echo "Папка build создана."
 fi
 
 echo "---------------------------------------------------------"

@@ -34,6 +34,8 @@ LIBS="$PROJECT_ROOT/lib/libiec61850/build/libiec61850.a \
       $PROJECT_ROOT/lib/realtek/librtcore.a \
       $PROJECT_ROOT/lib/realtek/librtusr.a"
 
+LDFLAGS="-Wl,-dynamic-linker,/usr/local/lib/ld-uClibc.so.0"
+
 echo "Кросс-компиляция сервера..."
 $CC $INCLUDES $PROJECT_ROOT/src/main.c $PROJECT_ROOT/src/static_model.c \
     -o "$PROJECT_ROOT/build/mms_server_mips" $LIBS -lpthread -lrt -lm

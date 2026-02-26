@@ -26,7 +26,6 @@ int main(int argc, char** argv) {
 
     signal(SIGINT, sigint_handler);
     printf("MMS Server (Realtek MIPS) is running...\n");
-    printf("Monitoring 6 ports with Time & Quality updates.\n");
 
     DataAttribute* stValAttrs[] = {
         IEDMODEL_LD0_LPCP1_PhyHealth_stVal, IEDMODEL_LD0_LPCP2_PhyHealth_stVal,
@@ -63,7 +62,7 @@ int main(int argc, char** argv) {
             int result = rtrpc_port_linkMedia_get(0, portNum, &link_status, &port_media);
             
             if (result != 0) {
-                quality = QUALITY_VALIDITY_INVALID; // Если чип не ответил
+                quality = QUALITY_VALIDITY_INVALID;
             }
 
             int healthStatus = (link_status == PORT_LINKUP) ? 1 : 3;
