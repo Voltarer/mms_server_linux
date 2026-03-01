@@ -12,30 +12,33 @@
 							<FCDA ldInst="LD0" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1" daName="mag.f" fc="MX"/>
 
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1" doName="TxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" daName="stVal" fc="ST"/>
-
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2" doName="TxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LCCH" lnInst="2" doName="ChLiv" daName="stVal" fc="ST"/>
-
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3" doName="TxCnt" daName="actVal" fc="ST"/>
-
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4" doName="TxCnt" daName="actVal" fc="ST"/>
-
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5" doName="TxCnt" daName="actVal" fc="ST"/>
-
 							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="PhyHealth" daName="stVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="RxCnt" daName="actVal" fc="ST"/>
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6" doName="TxCnt" daName="actVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="7" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="8" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="9" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="10" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="11" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="12" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="13" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="14" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="15" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="16" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="17" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="18" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="19" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="20" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="21" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="22" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="23" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="24" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="25" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="26" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="27" doName="PhyHealth" daName="stVal" fc="ST"/>
+							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="28" doName="PhyHealth" daName="stVal" fc="ST"/>
 						</DataSet>
 						<ReportControl rptID="LD0/LLN0.RP.Events" confRev="1" buffered="false" bufTime="0" name="Events" datSet="battery">
 							<TrgOps dchg="true" qchg="true" period="false"/>
@@ -53,12 +56,56 @@
 					<LN lnClass="LCCH" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
 					<LN lnClass="LCCH" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
 					<LN lnClass="LCCH" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+					<LN lnClass="LCCH" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LCCH"/>
+
 					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 					<LN lnClass="LPCP" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 					<LN lnClass="LPCP" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 					<LN lnClass="LPCP" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
+					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP"/>
 				</LDevice>
 			</Server>
 		</AccessPoint>
