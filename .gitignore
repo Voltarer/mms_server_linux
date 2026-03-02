@@ -1,5 +1,8 @@
 # --- Инструменты и окружение ---
 toolchain/
+
+
+
 # Игнорировать сгенерированные файлы модели
 src/static_model.c
 src/static_model.h
