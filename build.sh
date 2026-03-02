@@ -3,7 +3,7 @@
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WORKSPACE_ROOT="$( cd "$PROJECT_ROOT/.." && pwd )"
 
-CC="$WORKSPACE_ROOT/toolchain/bin/mips-linux-gcc"
+CC="$WORKSPACE_ROOT/toolchain/mips-buildroot-linux-uclibc_sdk-buildroot/bin/mips-linux-gcc"
 
 # Проверки
 if [ ! -f "$CC" ]; then

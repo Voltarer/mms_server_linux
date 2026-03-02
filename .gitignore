@@ -4,6 +4,7 @@ toolchain/
 # --- Результаты сборки ---
 build/
 bin/
+lib/
 *.o
 *.out
 
@@ -19,3 +20,7 @@ lib/sdk/
 .idea/
 *.swp
 *.log
+
+# файлы
+static_model.c
+static_model.h
