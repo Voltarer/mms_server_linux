@@ -1,35 +1,48 @@
 #include "hal_thread.h"
 #include "hal_time.h"
 #include "iec61850_server.h"
-#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Подключение Realtek SDK */
-#include "dal/rtrpc/rtrpc_port.h"
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <windows.h>  
+    #include <signal.h>
+#else
+#include <signal.h>
+#include <unistd.h>
+#endif
 
-/* Подключение сгенерированной модели данных */
+#ifdef TARGET_MIPS
+#include "dal/rtrpc/rtrpc_port.h"
+#endif
+
 #include "static_model.h"
 
 #define TOTAL_PORTS 28
 
 static int running = 1;
-
 void sigint_handler(int signalId) { running = 0; }
+
 int main(int argc, char **argv) {
+
+#ifdef _WIN32
+  WSADATA wsaData;
+  WSAStartup(MAKEWORD(2, 2), &wsaData);
+#endif
 
   IedServer iedServer = IedServer_create(&iedModel);
 
   IedServer_start(iedServer, 102);
 
   if (!IedServer_isRunning(iedServer)) {
-    printf("Starting server failed! Exit.\n");
+    printf("Starting server failed! (Check if port 102 is free and you have "
+           "Admin rights)\\n");
     IedServer_destroy(iedServer);
     exit(-1);
   }
-  signal(SIGINT, sigint_handler);
 
-  printf("MMS Server (Realtek MIPS) is running...\n");
+  signal(SIGINT, sigint_handler);
 
   DataAttribute *stValAttrs[TOTAL_PORTS] = {
       IEDMODEL_LD0_LPCP1_PhyHealth_stVal,  IEDMODEL_LD0_LPCP2_PhyHealth_stVal,
@@ -79,41 +92,43 @@ int main(int argc, char **argv) {
       IEDMODEL_LD0_LPCP25_PhyHealth_t, IEDMODEL_LD0_LPCP26_PhyHealth_t,
       IEDMODEL_LD0_LPCP27_PhyHealth_t, IEDMODEL_LD0_LPCP28_PhyHealth_t};
 
+  printf("MMS Server is running...\\n");
+
   while (running) {
-    rtk_port_linkStatus_t link_status;
-    rtk_port_media_t port_media;
     uint64_t timeMs = Hal_getTimeInMs();
-    Timestamp ts;
-    Timestamp_setTimeInMilliseconds(&ts, timeMs);
+
     IedServer_lockDataModel(iedServer);
 
     for (int i = 0; i < TOTAL_PORTS; i++) {
       int portNum = i + 1;
-      Quality quality = QUALITY_VALIDITY_GOOD;
+      int healthStatus = 1; // По умолчанию OK
 
+#ifdef TARGET_MIPS
+      rtk_port_linkStatus_t link_status;
+      rtk_port_media_t port_media;
       int result =
           rtrpc_port_linkMedia_get(0, portNum, &link_status, &port_media);
-
-      if (result != 0) {
-        quality = QUALITY_VALIDITY_INVALID;
-      }
-
-      /* 1 = Ok (Link UP), 3 = Alarm (Link DOWN) */
-      int healthStatus = (link_status == PORT_LINKUP) ? 1 : 3;
+      healthStatus = (link_status == PORT_LINKUP) ? 1 : 3;
+#else
+      /* Логика для симуляции (Windows/Ubuntu) */
+      healthStatus = (portNum % 5 == 0) ? 3 : 1; // Каждый 5-й порт "в аларме"
+#endif
 
       IedServer_updateInt32AttributeValue(iedServer, stValAttrs[i],
                                           healthStatus);
-      IedServer_updateQuality(iedServer, qAttrs[i], quality);
-      IedServer_updateTimestampAttributeValue(iedServer, tAttrs[i], &ts);
     }
 
     IedServer_unlockDataModel(iedServer);
-    Thread_sleep(1000);
+    Thread_sleep(100);
   }
 
   IedServer_stop(iedServer);
   IedServer_destroy(iedServer);
 
-  printf("Server stopped.\n");
+#ifdef _WIN32
+  WSACleanup();
+#endif
+
+  printf("Server stopped.\\n");
   return 0;
 }

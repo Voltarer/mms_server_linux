@@ -65,29 +65,44 @@ echo "✅ wget/curl найдены."
 ######################################################################
 # Загрузка и распаковка sdk.rar
 echo "Проверка sdk..."
+# 1. Проверяем, не распакован ли уже SDK
 if [ ! -d "$LIB_DIR/sdk" ]; then
     cd "$LIB_DIR"
-    echo "Загрузка sdk.rar..."
-    wget https://github.com/Voltarer/mms_server_linux/releases/download/2.0/sdk.rar &>/dev/null
 
-    if [ $? -eq 0 ]; then
-        echo "✅ Файл sdk.rar успешно загружен."
-        echo "Начинается распаковка файла sdk.rar..."
-        unrar x -y sdk.rar &>/dev/null
-        if [ $? -eq 0 ]; then
-            echo "✅ Файл sdk успешно распакован."
-            rm -f sdk.rar # Удаляем архив после распаковки
-        else
-            echo "❌ ОШИБКА распаковки файла sdk."
+    # 2. Проверяем, нет ли уже скачанного архива sdk.rar
+    if [ ! -f "sdk.rar" ]; then
+        echo "sdk.rar не найден. Загрузка..."
+        wget https://github.com/Voltarer/mms_server_linux/releases/download/2.0/sdk.rar &>/dev/null
+        if [ $? -ne 0 ]; then
+            echo "❌ ОШИБКА загрузки файла sdk.rar."
             exit 1
         fi
+        echo "✅ Файл sdk.rar успешно загружен."
     else
-        echo "❌ ОШИБКА загрузки файла sdk.rar."
+        echo "📦 Архив sdk.rar уже на месте, загрузка не требуется."
+    fi
+
+    # 3. Распаковка
+    echo "Начинается распаковка файла sdk.rar..."
+    if command -v unrar &>/dev/null; then
+        unrar x -y sdk.rar &>/dev/null
+    elif command -v 7z &>/dev/null; then
+        7z x -y sdk.rar &>/dev/null
+    else
+        echo "❌ ОШИБКА: Не найден unrar или 7z. Установи: sudo apt install unrar"
+        exit 1
+    fi
+
+    if [ $? -eq 0 ]; then
+        echo "✅ Файл sdk успешно распакован."
+        rm -f sdk.rar
+    else
+        echo "❌ ОШИБКА распаковки файла sdk."
         exit 1
     fi
     cd "$PROJECT_ROOT"
 else
-    echo "✅ SDK уже распакован."
+    echo "✅ SDK уже распакован в папку lib/sdk."
 fi
 ######################################################################
 # Загрузка компилятора
@@ -139,26 +154,26 @@ fi
 cd "$PROJECT_ROOT"
 ######################################################################
 # Собираем библиотеку под MIPS
-echo "Сборка libiec61850 под архитектуру MIPS..."
-if [ -f "$CC_MIPS" ]; then
-    cd "$LIB_PATH"
-    # Проверяем, собрана ли уже либа, чтобы не тратить время
-    if [ ! -f "build/libiec61850.a" ]; then
-        make CC="$CC_MIPS" &>/dev/null
-        if [ $? -eq 0 ]; then
-            echo "✅ Библиотека успешно собрана под MIPS."
-        else
-            echo "❌ ОШИБКА сборки библиотеки."
-            exit 1
-        fi
-    else
-        echo "✅ Библиотека libiec61850 уже собрана."
-    fi
-    cd "$PROJECT_ROOT"
-else
-    echo "❌ Кросс-компилятор не найден: $CC_MIPS"
-    exit 1
-fi
+# echo "Сборка libiec61850 под архитектуру MIPS..."
+# if [ -f "$CC_MIPS" ]; then
+#     cd "$LIB_PATH"
+#     # Проверяем, собрана ли уже либа, чтобы не тратить время
+#     if [ ! -f "build/libiec61850.a" ]; then
+#         make CC="$CC_MIPS" &>/dev/null
+#         if [ $? -eq 0 ]; then
+#             echo "✅ Библиотека успешно собрана под MIPS."
+#         else
+#             echo "❌ ОШИБКА сборки библиотеки."
+#             exit 1
+#         fi
+#     else
+#         echo "✅ Библиотека libiec61850 уже собрана."
+#     fi
+#     cd "$PROJECT_ROOT"
+# else
+#     echo "❌ Кросс-компилятор не найден: $CC_MIPS"
+#     exit 1
+# fi
 ######################################################################
 # Сборка статичной модели
 if [ -f "$GEN_JAR" ]; then
@@ -177,6 +192,25 @@ else
     exit 1
 fi
 ######################################################################
+echo "Выберите целевую платформу:"
+echo "1) Ubuntu (x86_64) - для тестов на ПК"
+echo "2) MIPS (Realtek) - для устройства"
+read -p "Ваш выбор: " PLATFORM
+
+# Очистка старой сборки при смене платформы
+if [ -d "$LIB_PATH" ]; then
+    cd "$LIB_PATH" && make clean >/dev/null 2>&1 && cd "$PROJECT_ROOT"
+fi
+
+if [ "$PLATFORM" == "1" ]; then
+    echo "--- Настройка для Ubuntu ---"
+    cd "$LIB_PATH" && make &>/dev/null && cd "$PROJECT_ROOT"
+    echo "✅ Библиотека собрана под Ubuntu."
+else
+    echo "--- Настройка для MIPS ---"
+    cd "$LIB_PATH" && make CC="$CC_MIPS" &>/dev/null && cd "$PROJECT_ROOT"
+    echo "✅ Библиотека собрана под MIPS."
+fi
 echo "---------------------------------------------------------"
 echo "ПОДГОТОВКА ЗАВЕРШЕНА!"
 echo "---------------------------------------------------------"
