@@ -1,143 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SCL xmlns="http://www.iec.ch/61850/2003/SCL">
-	<Header id="LaptopServer" />
-	<IED name="LaptopServer">
+	<Header id="Switch" />
+	<IED name="Switch">
 		<AccessPoint name="AP1">
 			<Server>
 				<Authentication />
-				<LDevice inst="LD0">
+				<LDevice inst="Bridge">
 					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
-						<DataSet name="battery">
-							<FCDA ldInst="LD0" prefix="" lnClass="LPHD" lnInst="1"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1"
-								daName="mag.f" fc="MX" />
-
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="1"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="2"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="3"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="4"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="5"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="6"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="7"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="8"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="9"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="10"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="11"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="12"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="13"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="14"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="15"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="16"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="17"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="18"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="19"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="20"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="21"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="22"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="23"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="24"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="25"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="26"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="27"
-								doName="PhyHealth" daName="stVal" fc="ST" />
-							<FCDA ldInst="LD0" prefix="" lnClass="LPCP" lnInst="28"
-								doName="PhyHealth" daName="stVal" fc="ST" />
+						<DataSet name="ds">
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPHD" lnInst="1" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="GGIO" lnInst="1" doName="AnIn1" fc="MX" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="PhyHealth" fc="ST" />
+							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="PhyHealth" fc="ST" />
 						</DataSet>
-						<ReportControl rptID="LD0/LLN0.RP.Events" confRev="1" buffered="false"
-							bufTime="0" name="Events" datSet="battery">
-							<TrgOps dchg="true" qchg="true" period="false" />
-							<OptFields seqNum="true" timeStamp="true" dataSet="true"
-								reasonCode="true" configRef="true" />
-							<RptEnabled max="1" />
+						
+						<ReportControl rptID="Bridge/LLN0.RP.Events" 
+                                       confRev="1" 
+                                       buffered="false" 
+                                       bufTime="1000" 
+                                       name="urcbSW" 
+                                       datSet="ds"
+									   intgPd="600000">
+							<TrgOps dchg="true" qchg="true" dupd="false" period="true" gi="true" />
+							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" configRef="true" />
+							<RptEnabled max="6" />
 						</ReportControl>
 					</LN0>
 					<LN lnClass="LPHD" inst="1" lnType="LPHD_Type" />
 					<LN lnClass="GGIO" inst="1" lnType="GGIO_Type" />
 
-					<LN lnClass="LCCH" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
-					<LN lnClass="LCCH" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LCCH" />
+					<LN lnClass="LCCH" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP2</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP2</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP3</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP3</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP4</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP4</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP5</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP5</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP6</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP6</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP7</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP7</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP8</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP8</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP9</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP9</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP10</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP10</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP11</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP11</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP12</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP12</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP13</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP13</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP14</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP14</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP15</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP15</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP16</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP16</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP17</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP17</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP18</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP18</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP19</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP19</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP20</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP20</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP21</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP21</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP22</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP22</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP23</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP23</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP24</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP24</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP25</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP25</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP26</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP26</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP27</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP27</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LCCH" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
+						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP28</Val></DAI></DOI>
+						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP28</Val></DAI></DOI>
+					</LN>
 
-					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
-					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP" />
+					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP">
+						<DOI name="PortNum"><DAI name="setVal"><Val>1</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>2</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>3</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>4</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>5</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>6</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>7</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>8</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>9</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>10</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>11</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>12</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>13</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>14</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>15</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>16</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>17</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>18</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>19</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>20</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>21</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>22</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>23</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>24</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>25</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>26</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>27</Val></DAI></DOI>
+					</LN>
+					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
+						<DOI name="PortNum"><DAI name="setVal"><Val>28</Val></DAI></DOI>
+					</LN>
 				</LDevice>
 			</Server>
 		</AccessPoint>

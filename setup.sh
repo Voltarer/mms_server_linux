@@ -192,25 +192,25 @@ else
     exit 1
 fi
 ######################################################################
-echo "Выберите целевую платформу:"
-echo "1) Ubuntu (x86_64) - для тестов на ПК"
-echo "2) MIPS (Realtek) - для устройства"
-read -p "Ваш выбор: " PLATFORM
+# echo "Выберите целевую платформу:"
+# echo "1) Ubuntu (x86_64) - для тестов на ПК"
+# echo "2) MIPS (Realtek) - для устройства"
+# read -p "Ваш выбор: " PLATFORM
 
-# Очистка старой сборки при смене платформы
-if [ -d "$LIB_PATH" ]; then
-    cd "$LIB_PATH" && make clean >/dev/null 2>&1 && cd "$PROJECT_ROOT"
-fi
+# # Очистка старой сборки при смене платформы
+# if [ -d "$LIB_PATH" ]; then
+#     cd "$LIB_PATH" && make clean >/dev/null 2>&1 && cd "$PROJECT_ROOT"
+# fi
 
-if [ "$PLATFORM" == "1" ]; then
-    echo "--- Настройка для Ubuntu ---"
-    cd "$LIB_PATH" && make &>/dev/null && cd "$PROJECT_ROOT"
-    echo "✅ Библиотека собрана под Ubuntu."
-else
-    echo "--- Настройка для MIPS ---"
-    cd "$LIB_PATH" && make CC="$CC_MIPS" &>/dev/null && cd "$PROJECT_ROOT"
-    echo "✅ Библиотека собрана под MIPS."
-fi
+# if [ "$PLATFORM" == "1" ]; then
+#     echo "--- Настройка для Ubuntu ---"
+#     cd "$LIB_PATH" && make &>/dev/null && cd "$PROJECT_ROOT"
+#     echo "✅ Библиотека собрана под Ubuntu."
+# else
+#     echo "--- Настройка для MIPS ---"
+#     cd "$LIB_PATH" && make CC="$CC_MIPS" &>/dev/null && cd "$PROJECT_ROOT"
+#     echo "✅ Библиотека собрана под MIPS."
+# fi
 echo "---------------------------------------------------------"
 echo "ПОДГОТОВКА ЗАВЕРШЕНА!"
 echo "---------------------------------------------------------"
