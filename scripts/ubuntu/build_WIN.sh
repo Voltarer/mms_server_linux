@@ -4,7 +4,8 @@ PROJECT_DIR="$HOME/Документы/MMS_SERVER_LUNIX/mms_server_linux"
 LIB_DIR="$PROJECT_DIR/lib/libiec61850"
 BUILD_DIR="$LIB_DIR/build_win/src"
 
-echo "--- Кросс-компиляция сервера для Windows ---"
+echo "---------------------------------------------------------"
+echo "Выбрана сборка под WIN"
 
 MEMORY_C="$LIB_DIR/hal/memory/lib_memory.c"
 TIME_C="$LIB_DIR/hal/time/win32/time.c"

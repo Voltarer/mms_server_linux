@@ -7,7 +7,6 @@
 				<Authentication />
 				<LDevice inst="Bridge">
 					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
-
 						<DataSet name="ds">
 							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="1" doName="RedChLiv" fc="ST" />
@@ -93,9 +92,7 @@
 							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="RedChLiv" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="FerCh" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="ChLiv" fc="ST" />
-						</DataSet>
-						<DataSet name="ds2">	
-							
+
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="AutoNgt" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="Beh" fc="ST" />
@@ -347,9 +344,7 @@
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="MauCfg" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="MauCfgCap" fc="ST" />
 							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="AdminCfg" fc="ST" />
-						</DataSet>
-
-						<DataSet name="StRpt">
+							
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PhyHealth" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="Proxy" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="NumPwrUp " fc="ST"/>
