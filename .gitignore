@@ -8,7 +8,8 @@ src/static_model.c
 src/static_model.h
 static_model.c
 static_model.h
-
+mms_server.exe
+*.exe
 # Игнорировать папку сборки
 build/
 
