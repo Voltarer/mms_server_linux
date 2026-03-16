@@ -1,8 +1,9 @@
 #!/bin/bash
-GEN_JAR="lib/libiec61850/tools/model_generator/genmodel.jar"
-ICD_FILE="src/model.icd"
-
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+WORKSPACE_ROOT="$(cd "$PROJECT_ROOT/.." && pwd)"
+LIB_DIR="$PROJECT_ROOT/lib"
+GEN_JAR="$LIB_DIR/libiec61850/tools/model_generator/genmodel.jar"
+ICD_FILE="src/model.icd"
 
 ######################################################################
 # Сборка статичной модели
