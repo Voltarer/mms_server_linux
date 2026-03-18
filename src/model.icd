@@ -396,22 +396,6 @@
 							<DAI name="t"/>
 							<DAI name="q"/>
 						</DOI>
-						<DOI name="TmpAlm">
-							<DAI name="stVal"/>
-							<DAI name="t"/>
-							<DAI name="q"/>
-							<DAI name="dataNs"/>
-							<DAI name="cdcNs"/>
-							<DAI name="cdcName"/>
-						</DOI>
-						<DOI name="TmpAlmSpt">
-							<SDI name="setMag">
-								<DAI name="i"/>
-							</SDI>
-							<DAI name="dataNs"/>
-							<DAI name="cdcNs"/>
-							<DAI name="cdcName"/>
-						</DOI>
 						<DOI name="Proxy">
 							<DAI name="stVal">
 								<Val>0</Val>
@@ -745,6 +729,28 @@
 			<DO name="AdminCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
 			<DO name="InRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" />
 		</LNodeType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_DO_0" cdc="INS">
+			<DA name="stVal" bType="INT32" fc="ST" dchg="true" />
+			<DA name="q" bType="Quality" fc="ST" qchg="true" />
+			<DA name="t" bType="Timestamp" fc="ST" />
+			<DA name="dataNs" fc="EX" bType="VisString255" />
+			<DA name="cdcNs" fc="EX" bType="VisString255" />
+			<DA name="cdcName" fc="EX" bType="VisString255" />
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_Proxy_0" cdc="SPS">
+			<DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" />
+			<DA name="q" bType="Quality" fc="ST" qchg="true" />
+			<DA name="t" bType="Timestamp" fc="ST" />
+		</DOType>
+
+		<DOType id="HIRSCHMANN_ETHSWITCH_DPL_0" cdc="DPL">
+			<DA name="vendor" fc="DC" bType="VisString255" />
+			<DA name="model" fc="DC" bType="VisString255" />
+			<DA name="serNum" fc="DC" bType="VisString255" /> 
+			<DA name="location" fc="DC" bType="VisString255" />
+		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_LPL_0" cdc="LPL" iedType="EES">
 			<DA name="vendor" fc="DC" bType="VisString255" valKind="RO" />

@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 WORKSPACE_ROOT="$(cd "$PROJECT_ROOT/.." && pwd)"
 LIB_DIR="$PROJECT_ROOT/lib"
 LIB_PATH="$PROJECT_ROOT/lib/libiec61850"
@@ -39,19 +39,28 @@ fi
 ######################################################################
 # Загружаем библиотеку libiec61850
 echo "Проверка библиотеки libiec61850..."
+
+# Убеждаемся, что мы находимся в корне проекта перед созданием папки
+cd "$PROJECT_ROOT"
+
 if [ ! -d "$LIB_PATH" ]; then
+    # Создаем целевую директорию, если её нет
+    mkdir -p "$LIB_DIR" 
     cd "$LIB_DIR"
-    echo "Начало загрузки..."
-    git clone https://github.com/mz-automation/libiec61850.git &>/dev/null
+    
+    echo "Начало загрузки в $(pwd)..."
+    git clone https://github.com/mz-automation/libiec61850.git
+    
     if [ $? -eq 0 ]; then
         echo "✅ Библиотека libiec61850 успешно загружена."
     else
         echo "❌ ОШИБКА загрузки библиотеки."
         exit 1
     fi
+    # Возвращаемся в корень проекта
     cd "$PROJECT_ROOT"
 else
-    echo "✅ Библиотека libiec61850 уже присутствует."
+    echo "✅ Библиотека libiec61850 уже присутствует по пути: $LIB_PATH"
 fi
 ######################################################################
 # Проверка наличия wget или curl

@@ -1,9 +1,18 @@
 #!/bin/bash
 
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 WORKSPACE_ROOT="$(cd "$PROJECT_ROOT/.." && pwd)"
 
-CC_MIPS="$WORKSPACE_ROOT/toolchain/mips-buildroot-linux-uclibc_sdk-buildroot/bin/mips-linux-gcc"
+LIB_DIR="$PROJECT_ROOT/lib"
+LIB_PATH="$LIB_DIR/libiec61850"
+LIB_TOOLCHAIN="$WORKSPACE_ROOT/toolchain"
+BUILD_DIR="$PROJECT_ROOT/build"
+
+CC_MIPS="$LIB_TOOLCHAIN/mips-buildroot-linux-uclibc_sdk-buildroot/bin/mips-linux-gcc"
+
+echo "---------------------------------------------------------"
+echo "Выбрана сборка под MIPS"
+echo "Корень проекта: $PROJECT_ROOT"
 
 echo "---------------------------------------------------------"
 echo "Выбрана сборка под MIPS"
