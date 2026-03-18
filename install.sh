@@ -10,9 +10,9 @@ echo "Подготовим нужные файлы..."
 if [ "$CHOISE" == "1" ]; then
     echo "Компиляция с Ubuntu..."
     ./scripts/ubuntu/choice.sh
-elif ["$CHOISE" == "2" ]; then
+elif [ "$CHOISE" == "2" ]; then   
     echo "Компиляция с Windows"
-    # ./scripts/win/build_win.bat
+    ./scripts/win/build_win.bat
 else
     echo "error"
 fi

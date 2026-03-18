@@ -99,13 +99,17 @@ int main(int argc, char **argv) {
 
     while (running) {
         uint64_t timeMs = Hal_getTimeInMs();
+        
+        Timestamp ts;
+        Timestamp_clearFlags(&ts);
+        Timestamp_setTimeInMilliseconds(&ts, timeMs);
 
         IedServer_lockDataModel(iedServer);
 
         for (int i = 0; i < TOTAL_PORTS; i++) {
             if (stValAttrs[i] == NULL) continue;
 
-            int portNum = i + 1;
+            int portNum = i;
             int healthStatus = 1; // Ok
 
 #ifdef TARGET_MIPS
@@ -118,9 +122,12 @@ int main(int argc, char **argv) {
                 }
             }
 #endif
-            IedServer_updateInt32AttributeValue(iedServer, stValAttrs[i], healthStatus);
+            // Явное приведение к int32_t на всякий случай
+            IedServer_updateInt32AttributeValue(iedServer, stValAttrs[i], (int32_t)healthStatus);
             IedServer_updateQuality(iedServer, qAttrs[i], QUALITY_VALIDITY_GOOD);
-            IedServer_updateTimestampAttributeValue(iedServer, tAttrs[i], timeMs);
+            
+            // Исправленная строка: передаем адрес структуры ts
+            IedServer_updateTimestampAttributeValue(iedServer, tAttrs[i], &ts);
         }
 
         IedServer_unlockDataModel(iedServer);
