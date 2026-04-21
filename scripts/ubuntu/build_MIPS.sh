@@ -137,8 +137,8 @@ $CC_MIPS \
     "$PROJECT_ROOT/lib/realtek/librtusr.a" \
     "$PROJECT_ROOT/lib/libiec61850/build/libiec61850.a" \
     $INCLUDES_IEC \
-    -std=c99 -DTARGET_MIPS -lpthread
-
+    -std=c99 -DTARGET_MIPS -lpthread \
+    -Wl,--dynamic-linker=/lib/ld-uClibc.so.0 
 if [ $? -eq 0 ]; then
     echo "✅ УСПЕХ: Файл готов в build/mms_server"
 else
