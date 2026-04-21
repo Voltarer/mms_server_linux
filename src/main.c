@@ -1,3 +1,4 @@
+#define _GNU_SOURCE 
 #include "hal_thread.h"
 #include "hal_time.h"
 #include "iec61850_server.h"
@@ -57,8 +58,8 @@ int get_port_status_netlink(int nl_fd, int port_idx) {
     if (send(nl_fd, &req, req.nlh.nlmsg_len, 0) < 0) return 2;
 
     // Ожидаемое имя интерфейса (например, eth1, eth2...)
-    char target_ifname[IFNAMSIZ];
-    snprintf(target_ifname, IFNAMSIZ, "eth%d", port_idx + 1);
+    char target_ifname[IF_NAMESIZE];
+    snprintf(target_ifname, IF_NAMESIZE, "eth%d", port_idx + 1);
 
     while ((len = recv(nl_fd, buf, sizeof(buf), 0)) > 0) {
         for (nlh = (struct nlmsghdr *)buf; NLMSG_OK(nlh, len); nlh = NLMSG_NEXT(nlh, len)) {
