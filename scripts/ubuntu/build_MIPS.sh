@@ -115,36 +115,32 @@ else
     echo "✅ Все библиотеки realtek присутствуют."
 fi
 cd "$PROJECT_ROOT"
-######################################################################
-# Общие инклуды для обеих сборок
-INCLUDES_BASE="-I$PROJECT_ROOT/lib/libiec61850/src/iec61850/inc \
-               -I$PROJECT_ROOT/lib/libiec61850/src/mms/inc \
-               -I$PROJECT_ROOT/lib/libiec61850/src/common/inc \
-               -I$PROJECT_ROOT/lib/libiec61850/src/logging \
-               -I$PROJECT_ROOT/lib/libiec61850/hal/inc \
-               -I$PROJECT_ROOT/lib/libiec61850/hal/api \
-               -I$PROJECT_ROOT/src"
-
-LIB_BASE="$PROJECT_ROOT/lib/libiec61850/build/libiec61850.a"
 
 echo "Кросс-компиляция под MIPS..."
-INCLUDES_MIPS="$INCLUDES_BASE \
-                -I$PROJECT_ROOT/lib/sdk/include \
-                -I$PROJECT_ROOT/lib/sdk/system/include"
 
-LIBS_MIPS="$LIB_BASE \
-            $PROJECT_ROOT/lib/realtek/librtk.a \
-            $PROJECT_ROOT/lib/realtek/librtnic.a \
-            $PROJECT_ROOT/lib/realtek/librtcore.a \
-            $PROJECT_ROOT/lib/realtek/librtusr.a"
+# Формируем инклуды (-Iinclude у Александра раскрыто для libiec61850)
+INCLUDES_IEC="-I$PROJECT_ROOT/lib/libiec61850/src/iec61850/inc \
+              -I$PROJECT_ROOT/lib/libiec61850/src/mms/inc \
+              -I$PROJECT_ROOT/lib/libiec61850/src/common/inc \
+              -I$PROJECT_ROOT/lib/libiec61850/src/logging \
+              -I$PROJECT_ROOT/lib/libiec61850/hal/inc \
+              -I$PROJECT_ROOT/lib/libiec61850/hal/api \
+              -I$PROJECT_ROOT/src"
 
-LDFLAGS="-Wl,-dynamic-linker,/usr/local/lib/ld-uClibc.so.0"
+INCLUDES_SDK="-I$PROJECT_ROOT/lib/sdk/include \
+              -I$PROJECT_ROOT/lib/sdk/system/include"
 
-$CC_MIPS -DTARGET_MIPS $INCLUDES_MIPS $PROJECT_ROOT/src/main.c $PROJECT_ROOT/src/static_model.c \
-    -o "$PROJECT_ROOT/build/mms_server_mips" $LIBS_MIPS -lpthread -lrt -lm $LDFLAGS
+$CC_MIPS \
+    -o "$PROJECT_ROOT/build/mms_server" \
+    "$PROJECT_ROOT/src/main.c" "$PROJECT_ROOT/src/static_model.c" \
+    $INCLUDES_SDK \
+    "$PROJECT_ROOT/lib/realtek/librtusr.a" \
+    "$PROJECT_ROOT/lib/libiec61850/build/libiec61850.a" \
+    $INCLUDES_IEC \
+    -std=c99 -DTARGET_MIPS -lpthread
 
 if [ $? -eq 0 ]; then
-    echo "✅ УСПЕХ: Файл готов в build/mms_server_mips"
+    echo "✅ УСПЕХ: Файл готов в build/mms_server"
 else
     echo "❌ ОШИБКА компиляции"
 fi
