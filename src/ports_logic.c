@@ -7,20 +7,18 @@
     #include <windows.h>
 #else
     #include <sys/socket.h>
+    #include <sys/ioctl.h>
     #include <linux/rtnetlink.h>
     #include <net/if.h>
     #include <unistd.h>
-    // Флаг наличия физического линка
+    
     #ifndef IFF_RUNNING
         #define IFF_RUNNING 0x40
     #endif
 #endif
 
 /**
- * Получение статуса порта через rtnetlink
- * @param port_idx Индекс порта (0, 1, 2...)
- * @param nl_fd Открытый сокет Netlink
- * @return 1 - Link Up (OK), 2 - Link Down (Warning)
+ * Получение статуса линка через Netlink
  */
 int get_hardware_port_status(int port_idx, int nl_fd) {
 #ifndef _WIN32
@@ -49,7 +47,6 @@ int get_hardware_port_status(int port_idx, int nl_fd) {
             char ifname[IF_NAMESIZE];
             if_indextoname(ifi->ifi_index, ifname);
             
-            // Сопоставление: индекс 0 -> eth0, индекс 1 -> eth1 и т.д.
             char expected_name[16];
             snprintf(expected_name, sizeof(expected_name), "eth%d", port_idx);
             
@@ -59,9 +56,40 @@ int get_hardware_port_status(int port_idx, int nl_fd) {
         }
         nh = NLMSG_NEXT(nh, len);
     }
-    return 1; // По умолчанию считаем, что все ок
-#else
-    // Заглушка для Windows
     return 1;
+#else
+    return 1;
+#endif
+}
+
+/**
+ * Управление интерфейсом (Up/Down) через ioctl
+ */
+int set_hardware_port_status(int port_idx, int enable) {
+#ifndef _WIN32
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) return -1;
+
+    struct ifreq ifr;
+    snprintf(ifr.ifr_name, IFNAMSIZ, "eth%d", port_idx);
+
+    if (ioctl(sockfd, SIOCGIFFLAGS, &ifr) < 0) {
+        close(sockfd);
+        return -1;
+    }
+
+    if (enable) ifr.ifr_flags |= (IFF_UP);
+    else ifr.ifr_flags &= ~(IFF_UP);
+
+    if (ioctl(sockfd, SIOCSIFFLAGS, &ifr) < 0) {
+        close(sockfd);
+        return -1;
+    }
+
+    close(sockfd);
+    printf("Интерфейс eth%d переведен в %s\n", port_idx, enable ? "UP" : "DOWN");
+    return 0;
+#else
+    return 0;
 #endif
 }
