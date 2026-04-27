@@ -1,353 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SCL xmlns="http://www.iec.ch/61850/2003/SCL">
+<SCL xmlns="http://www.iec.ch/61850/2003/SCL" version="2007" revision="B" release="4">
 	<Header id="Switch" />
+	 <Communication>
+		<SubNetwork name="SubNetworkName">
+		<ConnectedAP iedName="Switch" apName="AP1">
+			<Address>
+			<P type="OSI-AP-Title">1,3,9999,1</P>
+			<P type="OSI-AE-Qualifier">12</P>
+			<P type="OSI-PSEL">00000001</P>
+			<P type="OSI-SSEL">0001</P>
+			<P type="OSI-TSEL">0001</P>
+			</Address>
+		</ConnectedAP>
+		</SubNetwork>
+ 	</Communication>
 	<IED name="Switch">
 		<AccessPoint name="AP1">
 			<Server>
 				<Authentication />
 				<LDevice inst="Bridge">
 					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
-						<DataSet name="ds">
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="1" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="1" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="1" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="2" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="2" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="2" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="3" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="3" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="3" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="4" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="4" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="4" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="5" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="5" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="5" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="6" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="6" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="6" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="7" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="7" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="7" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="8" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="8" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="8" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="9" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="9" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="9" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="10" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="10" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="10" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="11" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="11" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="11" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="12" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="12" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="12" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="13" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="13" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="13" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="14" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="14" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="14" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="15" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="15" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="15" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="16" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="16" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="16" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="17" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="17" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="17" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="18" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="18" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="18" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="19" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="19" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="19" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="20" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="20" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="20" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="21" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="21" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="21" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="22" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="22" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="22" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="23" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="23" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="23" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="24" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="24" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="24" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="25" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="25" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="25" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="26" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="26" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="26" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="27" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="27" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="27" doName="ChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="RedChLiv" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="FerCh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LCCH" lnInst="28" doName="ChLiv" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="1" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="2" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="3" doName="AdminCfg" fc="ST" />
-							
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="4" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="5" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="6" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="7" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="8" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="9" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="10" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="11" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="12" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="13" doName="AdminCfg" fc="ST" />
-							
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="14" doName="AdminCfg" fc="ST" />
-							
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="15" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="16" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="17" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="18" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="19" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="20" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="21" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="22" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="23" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="24" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="25" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="26" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="27" doName="AdminCfg" fc="ST" />
-
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="AutoNgt" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="Mau" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="Beh" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="PortNum" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="AutoNgtCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="MauCfg" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="MauCfgCap" fc="ST" />
-							<FCDA ldInst="Bridge" prefix="" lnClass="LPCP" lnInst="28" doName="AdminCfg" fc="ST" />
-							
+						<DataSet name="ds">							
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PhyHealth" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="Proxy" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="NumPwrUp " fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="NumPwrUp" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="WrmStr" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="WacTrg" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PwrUp" fc="ST"/>
@@ -365,15 +41,18 @@
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="MemRs" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CRFail" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CRChg" fc="ST"/>
+
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST"/>
 						</DataSet>
 						
 						<ReportControl rptID="Bridge/LLN0.RP.Events" 
-                                       confRev="1" 
-                                       buffered="false" 
-                                       bufTime="1000" 
-                                       name="urcbSW" 
-                                       datSet="ds"
-									   intgPd="600000">
+								confRev="1" 
+								buffered="false" 
+								bufTime="1000" 
+								name="urcbSW" 
+								datSet="ds"
+								intgPd="600000"
+								resvTms="0">
 							<TrgOps dchg="true" qchg="true" dupd="false" period="true" gi="true" />
 							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" configRef="true" />
 							<RptEnabled max="6" />
@@ -441,7 +120,7 @@
 						<DOI name="RAMHealth"></DOI>
 						<DOI name="ROMHealth"></DOI>
 						<DOI name="CPUFail"></DOI>
-						<DOI name="FWFFail"></DOI>
+						<DOI name="FWFail"></DOI>
 						<DOI name="TmpHealth"></DOI>
 						<DOI name="AuxIOUnitSt1"></DOI>
 						<DOI name="SrvConn"></DOI>
@@ -453,199 +132,11 @@
 						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 					</LN>
-					<LN lnClass="LCCH" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP2</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP2</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP3</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP3</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP4</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP4</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP5</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP5</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP6</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP6</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP7</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP7</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP8</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP8</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP9</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP9</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP10</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP10</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP11</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP11</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP12</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP12</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP13</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP13</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP14</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP14</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP15</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP15</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP16</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP16</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP17</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP17</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP18</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP18</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP19</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP19</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP20</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP20</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP21</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP21</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP22</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP22</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP23</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP23</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP24</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP24</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP25</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP25</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP26</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP26</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP27</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP27</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LCCH" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LCCH">
-						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP28</Val></DAI></DOI>
-						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP28</Val></DAI></DOI>
-					</LN>
-
+					
 					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP">
 						<DOI name="PortNum"><DAI name="setVal"><Val>1</Val></DAI></DOI>
 					</LN>
-					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>2</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>3</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="4" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>4</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="5" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>5</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="6" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>6</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="7" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>7</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="8" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>8</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="9" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>9</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="10" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>10</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="11" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>11</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="12" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>12</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="13" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>13</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="14" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>14</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="15" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>15</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="16" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>16</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="17" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>17</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="18" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>18</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="19" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>19</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="20" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>20</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="21" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>21</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>22</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>23</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>24</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>25</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>26</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>27</Val></DAI></DOI>
-					</LN>
-					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP" >
-						<DOI name="PortNum"><DAI name="setVal"><Val>28</Val></DAI></DOI>
-					</LN>
+					
 				</LDevice>
 			</Server>
 		</AccessPoint>
@@ -672,7 +163,7 @@
 			<DO name="RAMHealth" type="HIRSCHMANN_ETHSWITCH_ENS_1"/>	
 			<DO name="ROMHealth" type="HIRSCHMANN_ETHSWITCH_ENS_1"/>	
 			<DO name="CPUFail" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
-			<DO name="FWFFail" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
+			<DO name="FWFail" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
 			<DO name="TmpHealth" type="HIRSCHMANN_ETHSWITCH_ENS_1"/>
 			<DO name="AuxIOUnitSt1" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
 			<DO name="SrvConn" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
@@ -757,16 +248,7 @@
 			<DA name="swRev" fc="DC" bType="VisString255" valKind="RO" />
 			<DA name="d" fc="DC" bType="VisString255" />
 			<DA name="lnNs" fc="EX" bType="VisString255" valKind="RO">
-				<Val>(Tr)IEC 61850-90-4:2012</Val>
-			</DA>
-		</DOType>
-
-		  <DOType id="HIRSCHMANN_ETHSWITCH_LPL_0" cdc="LPL" iedType="EES">
-			<DA name="vendor" fc="DC" bType="VisString255" valKind="RO"/>
-			<DA name="swRev" fc="DC" bType="VisString255" valKind="RO"/>
-			<DA name="d" fc="DC" bType="VisString255"/>
-			<DA name="lnNs" fc="EX" bType="VisString255" valKind="RO">
-				<Val>(Tr)IEC 61850-90-4:2012</Val>
+				<Val>IEC 61850-7-4:2007</Val>
 			</DA>
 		</DOType>
 
@@ -782,7 +264,7 @@
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_VSD_0" cdc="VSD" iedType="EES">
+		<DOType id="HIRSCHMANN_ETHSWITCH_VSD_0" cdc="SPS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO"/>
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
@@ -794,23 +276,21 @@
 			<DA name="location" fc="DC" bType="VisString255" valKind="RO" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ENC_1" cdc="ENC" iedType="EES">
-			<DA dchg="true" name="stVal" fc="ST" bType="Enum"
-				type="HIRSCHMANN_ETHSWITCH_ctlModel_kind" valKind="RO" />
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENC_1" cdc="INC" iedType="EES">
+			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
-			<DA dchg="true" name="ctlModel" fc="CF" bType="Enum"
-				type="HIRSCHMANN_ETHSWITCH_ctlModel_kind" valKind="RO" />
+			<DA dchg="true" name="ctlModel" fc="CF" bType="INT32" valKind="RO" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_90-4_1" cdc="ENS" iedType="EES">
-			<DA dchg="true" name="stVal" fc="ST" bType="Enum" type="BehaviourModeKind" valKind="RO" />
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_90-4_1" cdc="INS" iedType="EES">
+			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_1" cdc="ENS" iedType="EES">
-			<DA dchg="true" name="stVal" fc="ST" bType="Enum" type="HealthKind" valKind="RO" />
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENS_1" cdc="INS" iedType="EES">
+			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
 		</DOType>
@@ -821,7 +301,6 @@
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
 		</DOType>
 		
-
 		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_0" cdc="INS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
@@ -837,8 +316,8 @@
 			</DA>
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ENG" iedType="EES">
-			<DA dchg="true" name="setVal" fc="SP" bType="Enum" type="ChannelRedundancyKind" />
+		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ING" iedType="EES">
+			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_ING_90-4_DO_0" cdc="ING" iedType="EES">
@@ -849,11 +328,11 @@
 			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" cdc="ORG" iedType="EES">
+		<DOType id="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" cdc="SPG" iedType="EES">
 			<DA dchg="true" name="setSrcRef" fc="SP" bType="ObjRef" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" cdc="VSG" iedType="EES">
+		<DOType id="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" cdc="SPG" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="VisString255" />
 		</DOType>
 
