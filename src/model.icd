@@ -43,6 +43,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CRChg" fc="ST"/>
 
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="Mau" fc="ST"/>
 						</DataSet>
 						
 						<ReportControl rptID="Bridge/LLN0.RP.Events" 
@@ -132,11 +133,9 @@
 						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 					</LN>
-					
 					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP">
 						<DOI name="PortNum"><DAI name="setVal"><Val>1</Val></DAI></DOI>
 					</LN>
-					
 				</LDevice>
 			</Server>
 		</AccessPoint>
@@ -207,7 +206,7 @@
 			<DO name="TxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0" />
 			<DO name="FerPort" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0" />
 			<DO name="AutoNgt" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" />
-			<DO name="Mau" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0" />
+			<DO name="Mau" type="INC_Type" />	
 			<DO name="Beh" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Health" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Mir" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
@@ -215,7 +214,7 @@
 			<DO name="PortNum" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
 			<DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
 			<DO name="AutoNgtCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
-			<DO name="MauCfg" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
+			<DO name="MauCfg" type="HIRSCHMANN_ETHSWITCH_ING_W_0" />
 			<DO name="MauCfgCap" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
 			<DO name="AdminCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
 			<DO name="InRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" />
@@ -316,6 +315,11 @@
 			</DA>
 		</DOType>
 
+		<DOType id="HIRSCHMANN_ETHSWITCH_ING_W_0" cdc="ING" iedType="EES">
+			<DA name="stVal" bType="INT32" fc="ST" dchg="true" />
+			<DA name="setVal" bType="INT32" fc="SP" />
+		</DOType>
+
 		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ING" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
 		</DOType>
@@ -361,7 +365,7 @@
 			<EnumVal ord="3">hsr</EnumVal>
 		</EnumType>
 		<DOType id="INC_Type" cdc="INC">
-			<DA name="stVal" bType="INT32" fc="ST" />
+			<DA name="stVal" bType="INT32" fc="SP" />
 			<DA name="q" bType="Quality" fc="ST" />
 			<DA name="t" bType="Timestamp" fc="ST" />
 		</DOType>

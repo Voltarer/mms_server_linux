@@ -3,6 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include <linux/sockios.h>
+#include <linux/ethtool.h>
+
 #ifdef _WIN32
     #include <windows.h>
 #else
@@ -88,6 +91,44 @@ int set_hardware_port_status(int port_idx, int enable) {
 
     close(sockfd);
     printf("Интерфейс eth%d переведен в %s\n", port_idx, enable ? "UP" : "DOWN");
+    return 0;
+#else
+    return 0;
+#endif
+}
+/* Изменение скорости */
+int set_hardware_port_speed(int port_idx, int speed_mbps) {
+#ifndef _WIN32
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) return -1;
+
+    struct ifreq ifr;
+    struct ethtool_cmd ecmd;
+    char ifname[16];
+    snprintf(ifname, sizeof(ifname), "enp3s0");
+    strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+
+    // Сначала читаем текущие настройки
+    ifr.ifr_data = (caddr_t)&ecmd;
+    ecmd.cmd = ETHTOOL_GSET;
+    if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
+        close(sockfd);
+        return -1;
+    }
+
+// Устанавливаем новую скорость и отключаем автосогласование (для принудительной установки)
+    ethtool_cmd_speed_set(&ecmd, speed_mbps);
+    ecmd.autoneg = AUTONEG_DISABLE; 
+    ecmd.cmd = ETHTOOL_SSET;
+
+    if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
+        perror("Ошибка ioctl(SIOCETHTOOL) SSET"); // <-- ДОБАВЬТЕ ЭТО
+        close(sockfd);
+        return -1;
+    }
+
+    close(sockfd);
+    printf("Hardware: Скорость eth%d установлена в %d Mbps\n", port_idx, speed_mbps);
     return 0;
 #else
     return 0;
