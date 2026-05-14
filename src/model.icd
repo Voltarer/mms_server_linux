@@ -210,6 +210,13 @@
 			<DO name="Beh" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Health" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Mir" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
+
+			<DO name="MtuCfg" type="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1"/>
+			<DO name="Mtu" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+
+			<DO name="FlowControlCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
+			<DO name="FlowControl" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+
 			<DO name="PortNam" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
 			<DO name="PortNum" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
 			<DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
@@ -297,7 +304,7 @@
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" cdc="SPS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
-			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
+			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />HIRSCHMANN_ETHSWITCH_VSG_90-4_0
 		</DOType>
 		
 		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_0" cdc="INS" iedType="EES">
