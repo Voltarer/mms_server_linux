@@ -20,32 +20,34 @@
 				<Authentication />
 				<LDevice inst="Bridge">
 					<LN0 lnClass="LLN0" inst="" lnType="LLN0_Type">
-						<DataSet name="ds">							
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PhyHealth" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="Proxy" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="NumPwrUp" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="WrmStr" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="WacTrg" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PwrUp" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PwrDn" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PwrSupAlm" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="PwrFail" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="RAMHealth" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="ROMHealth" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CPUFail" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="FWFail" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="TmpHealth" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="AuxIOUnitSt1" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="SrvConn" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CybSecEvt" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="MemRs" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CRFail" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPHD" lnInst="1" doName="CRChg" fc="ST"/>
-
+						<DataSet name="ds">
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="PortNum" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MauCfgCap" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mtu" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MtuCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="FlowControl" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MtuCfg" fc="ST"/>
+
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="PortNum" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="Mau" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MauCfgCap" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="Mtu" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MtuCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="FlowControl" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MtuCfg" fc="ST"/>
+
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="PortNum" fc="ST"/>							
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="Mau" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MauCfgCap" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="Mtu" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MtuCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="FlowControl" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MtuCfg" fc="ST"/>
 						</DataSet>
-						
 						<ReportControl rptID="Bridge/LLN0.RP.Events" 
 								confRev="1" 
 								buffered="false" 
@@ -56,7 +58,7 @@
 								resvTms="0">
 							<TrgOps dchg="true" qchg="true" dupd="false" period="true" gi="true" />
 							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" configRef="true" />
-							<RptEnabled max="6" />
+							<RptEnabled max="1" />
 						</ReportControl>
 					</LN0>
 					<LN lnClass="LPHD" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPHD">
@@ -133,9 +135,9 @@
 						<DOI name="PortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 						<DOI name="RedPortRef"><DAI name="setSrcRef"><Val>Bridge/LPCP1</Val></DAI></DOI>
 					</LN>
-					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP">
-						<DOI name="PortNum"><DAI name="setVal"><Val>1</Val></DAI></DOI>
-					</LN>
+					<LN lnClass="LPCP" inst="1" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>1</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="2" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>2</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="3" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>3</Val></DAI></DOI></LN>
 				</LDevice>
 			</Server>
 		</AccessPoint>
@@ -210,13 +212,10 @@
 			<DO name="Beh" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Health" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Mir" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
-
 			<DO name="MtuCfg" type="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1"/>
 			<DO name="Mtu" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
-
 			<DO name="FlowControlCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
 			<DO name="FlowControl" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
-
 			<DO name="PortNam" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
 			<DO name="PortNum" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
 			<DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
@@ -304,7 +303,7 @@
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" cdc="SPS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
-			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />HIRSCHMANN_ETHSWITCH_VSG_90-4_0
+			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
 		</DOType>
 		
 		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_0" cdc="INS" iedType="EES">
