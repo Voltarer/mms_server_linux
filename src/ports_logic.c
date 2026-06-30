@@ -15,7 +15,7 @@
  * Заполняет буфер именем текущего интерфейса. 
  */
 void get_hardware_ifname(int port_idx, char* dest, size_t max_len) {
-    snprintf(dest, max_len, "lan%d", port_idx);
+    snprintf(dest, max_len, "lan%d", port_idx+1);
 }
 
 int get_hardware_port_status(int port_idx) {

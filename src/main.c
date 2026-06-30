@@ -12,7 +12,7 @@
 #include <linux/rtnetlink.h>
 #include <unistd.h>
 
-#define NUM_PORTS 3
+#define NUM_PORTS 28
 
 static IedServer g_iedServer = NULL;
 extern IedModel iedModel;
@@ -56,12 +56,23 @@ static void update_quality_and_time(IedServer server, int port_idx, const char* 
 
     DataAttribute* da_q = get_port_attr(attr_q, port_idx);
     if (da_q) {
+        // Бинарная строка 13 бит для Quality IEC 61850
         MmsValue* qVal = MmsValue_newBitString(13);
-        if (!is_valid) {
-            // Устанавливаем биты 0 и 1 в значение 01 (Invalid) по стандарту IEC 61850
+        
+        if (is_valid) {
+            // Validity: GOOD (00)
+            MmsValue_setBitStringBit(qVal, 0, 0);
+            MmsValue_setBitStringBit(qVal, 1, 0);
+        } else {
+            // Validity: INVALID (01)
             MmsValue_setBitStringBit(qVal, 0, 0);
             MmsValue_setBitStringBit(qVal, 1, 1);
+            
+            // "Оживляем" Quality Details: выставляем флаги, поясняющие причину невалидности
+            MmsValue_setBitStringBit(qVal, 6, 1); // Бит 6: Failure (Аппаратный сбой)
+            MmsValue_setBitStringBit(qVal, 7, 1); // Бит 7: OldData (Устаревшие данные)
         }
+        
         IedServer_updateAttributeValue(server, da_q, qVal);
         MmsValue_delete(qVal);
     }
