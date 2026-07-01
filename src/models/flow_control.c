@@ -1,0 +1,74 @@
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <linux/sockios.h>
+#include <linux/ethtool.h>
+#include <net/if.h>
+#include <errno.h>
+
+#include "flow_control.h"
+#include "common.h"
+#include "error.h"
+
+int get_hardware_flow_control(int port_idx) {
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) {
+        LOG_ERROR_PORT_DETAILED(port_idx, "socket");
+        return -1;
+    }
+
+    struct ifreq ifr;
+    struct ethtool_pauseparam epause;
+    get_hardware_ifname(port_idx, ifr.ifr_name, IFNAMSIZ);
+
+    epause.cmd = ETHTOOL_GPAUSEPARAM;
+    ifr.ifr_data = (caddr_t)&epause;
+
+    if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
+        // Если не поддерживается, не логируем как ошибку, а возвращаем 0 или -1? 
+        // Сейчас мы логируем и возвращаем -1, но может быть нормально, что не поддерживается.
+        // Для единообразия оставим логирование, но можно сделать тише.
+        LOG_ERROR_PORT_DETAILED(port_idx, "ioctl(ETHTOOL_GPAUSEPARAM)");
+        close(sockfd);
+        return -1;
+    }
+
+    close(sockfd);
+    return (epause.rx_pause || epause.tx_pause) ? 1 : 0;
+}
+
+int set_hardware_flow_control(int port_idx, int enable) {
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) {
+        LOG_ERROR_PORT_DETAILED(port_idx, "socket");
+        return -1;
+    }
+
+    struct ifreq ifr;
+    struct ethtool_pauseparam epause;
+    get_hardware_ifname(port_idx, ifr.ifr_name, IFNAMSIZ);
+
+    // Сначала получаем текущие параметры, чтобы не сбросить другие флаги
+    epause.cmd = ETHTOOL_GPAUSEPARAM;
+    ifr.ifr_data = (caddr_t)&epause;
+    // Не проверяем ошибку, т.к. может не поддерживаться, но тогда установим заново
+    ioctl(sockfd, SIOCETHTOOL, &ifr);
+
+    epause.cmd = ETHTOOL_SPAUSEPARAM;
+    epause.rx_pause = enable ? 1 : 0;
+    epause.tx_pause = enable ? 1 : 0;
+    
+    if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
+        LOG_ERROR_PORT_DETAILED(port_idx, "ioctl(ETHTOOL_SPAUSEPARAM)");
+        close(sockfd);
+        return -1;
+    }
+
+    close(sockfd);
+    printf("Hardware: Flow Control для %s установлен в %s\n", ifr.ifr_name, enable ? "ON" : "OFF");
+    return 0;
+}
