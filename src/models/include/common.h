@@ -2,24 +2,20 @@
 #define COMMON_H
 
 #include <stddef.h>   // size_t
-#include <stdbool.h>  // bool (необходимо для функции проверки наличия порта)
+#include <stdbool.h>  // bool
 
 /**
- * Выполняет сканирование сетевых интерфейсов в Linux (через getifaddrs),
- * отбирает подходящие порты (lanX, opticalX) и сопоставляет их с индексами MMS.
+ * Вариант А: Статическое сопоставление индексов и имен интерфейсов.
+ * Заполняет буфер dest точным именем интерфейса для заданного индекса порта.
+ * Индексы 0..23 -> lan0..lan23
+ * Индексы 24..27 -> optical0..optical3
  */
-void discover_hardware_ports(void);
+void get_hardware_ifname(int port_idx, char* dest, size_t max_len);
 
 /**
- * Проверяет, был ли успешно обнаружен физический интерфейс для данного индекса.
+ * Проверяет физическое существование интерфейса в операционной системе Linux.
  * Возвращает true, если интерфейс существует, и false, если отсутствует.
  */
 bool is_port_present(int port_idx);
-
-/**
- * Заполняет буфер dest реальным именем интерфейса для заданного индекса порта.
- * Если интерфейс для этого индекса не был найден в системе, запишет "unknown".
- */
-void get_hardware_ifname(int port_idx, char* dest, size_t max_len);
 
 #endif // COMMON_H

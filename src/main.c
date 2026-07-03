@@ -11,6 +11,7 @@
 #include <sys/socket.h>
 #include <linux/rtnetlink.h>
 #include <unistd.h>
+#include <stdbool.h>  // <-- Добавлено для поддержки типа bool
 
 #include "models/include/common.h"
 #include "models/include/status.h"
@@ -20,7 +21,7 @@
 #include "models/include/speed.h"
 #include "models/include/mtu.h"
 #include "models/include/flow_control.h"
-#include "models/include/error.h"    // <-- добавлено
+#include "models/include/error.h"
 
 #define NUM_PORTS 28
 
@@ -77,7 +78,7 @@ static MmsDataAccessError adminCfgWriteHandler(DataAttribute* attr, MmsValue* va
     if (MmsValue_getType(value) == MMS_BOOLEAN) {
         bool enable = MmsValue_getBoolean(value);
         int port_idx = (int)(intptr_t)parameter;
-        printf("MMS: Админ. статус порта lan%d -> %s\n", port_idx + 1, enable ? "UP" : "DOWN");
+        printf("MMS: Админ. статус порта %d -> %s\n", port_idx + 1, enable ? "UP" : "DOWN");
         if (set_hardware_port_status(port_idx, enable) == 0) return DATA_ACCESS_ERROR_SUCCESS;
         return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED;
     }
@@ -88,7 +89,7 @@ static MmsDataAccessError speedWriteHandler(DataAttribute* attr, MmsValue* value
     if (MmsValue_getType(value) == MMS_INTEGER) {
         int32_t mode_val = MmsValue_toInt32(value);
         int port_idx = (int)(intptr_t)parameter;
-        printf("MMS: Получена команда режима %d для lan%d\n", mode_val, port_idx + 1);
+        printf("MMS: Получена команда режима %d для порта %d\n", mode_val, port_idx + 1);
         if (set_hardware_port_speed(port_idx, mode_val) == 0) {
             g_pending_speed_update[port_idx] = mode_val;
             return DATA_ACCESS_ERROR_SUCCESS;
@@ -102,7 +103,7 @@ static MmsDataAccessError autoNgtWriteHandler(DataAttribute* attr, MmsValue* val
     if (MmsValue_getType(value) == MMS_BOOLEAN) {
         bool autongt_enable = MmsValue_getBoolean(value);
         int port_idx = (int)(intptr_t)parameter;
-        printf("MMS: Автосогласование lan%d -> %s\n", port_idx + 1, autongt_enable ? "ON" : "OFF");
+        printf("MMS: Автосогласование порта %d -> %s\n", port_idx + 1, autongt_enable ? "ON" : "OFF");
         if (set_autongt(port_idx, autongt_enable ? 1 : 0) == 0) {
             g_pending_autongt_update[port_idx] = autongt_enable ? 1 : 0;
             return DATA_ACCESS_ERROR_SUCCESS;
@@ -128,7 +129,7 @@ static MmsDataAccessError mtuWriteHandler(DataAttribute* attr, MmsValue* value, 
     if (MmsValue_getType(value) == MMS_INTEGER) {
         int32_t new_mtu = MmsValue_toInt32(value);
         int port_idx = (int)(intptr_t)parameter;
-        printf("MMS: MTU lan%d -> %d\n", port_idx + 1, new_mtu);
+        printf("MMS: MTU порта %d -> %d\n", port_idx + 1, new_mtu);
         if (set_hardware_mtu(port_idx, new_mtu) == 0) {
             g_pending_mtu_update[port_idx] = new_mtu;
             return DATA_ACCESS_ERROR_SUCCESS;
@@ -143,7 +144,18 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
     char mac_address[18];
     
     get_hardware_ifname(port_idx, ifname, sizeof(ifname));
-    printf("Init port %d: ifname = %s\n", port_idx + 1, ifname);  // лог имени
+
+    // Добавлено: Безопасный выход, если интерфейс не существует физически в Linux
+    if (!is_port_present(port_idx)) {
+        printf("Init port %d: [ABSENT] (Интерфейс %s не найден в ОС)\n", port_idx + 1, ifname);
+        DataAttribute* da_portnam = get_port_attr("PortNam.setVal", port_idx);
+        if (da_portnam) IedServer_updateVisibleStringAttributeValue(server, da_portnam, "ABSENT");
+        DataAttribute* da_status = get_port_attr("Mau.stVal", port_idx);
+        if (da_status) IedServer_updateInt32AttributeValue(server, da_status, 2); // DOWN
+        return;
+    }
+
+    printf("Init port %d: ifname = %s [OK]\n", port_idx + 1, ifname);
 
     DataAttribute* da_portnam = get_port_attr("PortNam.setVal", port_idx);
     if (da_portnam) {
@@ -240,7 +252,6 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
         if (status != -1) {
             IedServer_updateInt32AttributeValue(server, da_status, status);
         } else {
-            // Если не удалось получить, ставим 2 (down) и качество будет INVALID в цикле
             IedServer_updateInt32AttributeValue(server, da_status, 2);
         }
     }
@@ -321,6 +332,16 @@ int main(int argc, char** argv) {
         IedServer_lockDataModel(g_iedServer);
 
         for (int i = 0; i < NUM_PORTS; i++) {
+            // Добавлено: Если физического интерфейса в системе нет, выставляем INVALID-качество и скипаем ioctl-опрос
+            if (!is_port_present(i)) {
+                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Mau.stVal", i), 2); // DOWN
+                update_quality_and_time(g_iedServer, i, "Mau", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "AutoNgt", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "Mtu", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "FlowControl", false, timeMs);
+                continue;
+            }
+
             // Обработка отложенных обновлений (MMS -> Железо)
             if (g_pending_speed_update[i] != -1) {
                 IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.stVal", i), g_pending_speed_update[i]);
