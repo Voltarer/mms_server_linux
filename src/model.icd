@@ -522,7 +522,7 @@
 			<DO name="Health" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
 			<DO name="Mir" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
 			<DO name="MtuCfg" type="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1"/>
-			<DO name="Mtu" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+			<DO name="Mtu" type="INC_Type"/>
 			<DO name="FlowControlCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
 			<DO name="FlowControl" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
 			<DO name="PortNam" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />

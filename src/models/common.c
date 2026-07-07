@@ -11,7 +11,6 @@ void get_hardware_ifname(int port_idx, char* dest, size_t max_len) {
         return;
     }
     
-    // Вариант А: Статическое соответствие без смещения +1
     // Первые 24 порта (индексы 0..23) -> lan0..lan23
     if (port_idx < 24) {
         snprintf(dest, max_len, "lan%d", port_idx);

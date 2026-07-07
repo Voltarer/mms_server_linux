@@ -5,6 +5,7 @@ PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 LIB_DIR="$PROJECT_ROOT/lib"
 LIB_PATH="$LIB_DIR/libiec61850"
 BUILD_DIR="$PROJECT_ROOT/build"
+OBJ_DIR="$BUILD_DIR/obj"   # Папка для объектных файлов (перенесено из MIPS)
 
 CC="gcc"
 AR="ar"
@@ -15,13 +16,16 @@ echo "Корень проекта: $PROJECT_ROOT"
 echo "---------------------------------------------------------"
 
 # 1. Очистка старой сборки
-rm -rf "$BUILD_DIR"
-mkdir -p "$BUILD_DIR"
 if [ -d "$LIB_PATH" ]; then
     cd "$LIB_PATH" && make clean >/dev/null 2>&1 && cd "$PROJECT_ROOT"
 fi
 
-# 2. Пути инклудов (добавляем путь к заголовкам модулей)
+# Полностью удаляем директорию build со всем содержимым
+rm -rf "$BUILD_DIR"
+# Удаляем старую библиотеку модулей
+rm -f "$LIB_DIR/libmyports.a"
+
+# 2. Пути инклудов (исправлено: убран невалидный путь с переменной $mod)
 INCLUDES_IEC="-I$LIB_PATH/src/iec61850/inc \
               -I$LIB_PATH/src/mms/inc \
               -I$LIB_PATH/src/common/inc \
@@ -29,23 +33,39 @@ INCLUDES_IEC="-I$LIB_PATH/src/iec61850/inc \
               -I$LIB_PATH/hal/inc \
               -I$LIB_PATH/hal/api \
               -I$PROJECT_ROOT/src \
-              -I$PROJECT_ROOT/src/models/include\
-              -I$PROJECT_ROOT/src/models/$mod"   # <-- добавлено
+              -I$PROJECT_ROOT/src/models/include"
+
+# Создаем чистые папки для новой сборки
+mkdir -p "$BUILD_DIR"
+mkdir -p "$OBJ_DIR"
 
 # 3. Сборка libiec61850
 echo "--- Сборка библиотеки libiec61850 (Native) ---"
 cd "$LIB_PATH" && make CC="$CC" &>/dev/null && cd "$PROJECT_ROOT"
 
-# 4. Сборка модулей портов (все .c файлы)
+# 4. Динамический поиск файлов модулей (вместо захардкоженного списка)
+MODULE_SRCS=$(find "$PROJECT_ROOT/src" -name "*.c" \
+              ! -name "main.c" ! -name "static_model.c" \
+              ! -name "*ports_logic*")
+
+if [ -z "$MODULE_SRCS" ]; then
+    echo "⚠️ Не найдены файлы модулей! Проверьте пути."
+    exit 1
+fi
+
 echo "--- Сборка модулей портов (Native) ---"
-# Список файлов модулей (предполагается, что они лежат в $PROJECT_ROOT/src/)
-MODULES="common.c status.c mac.c capabilities.c speed.c autoneg.c flow_control.c mtu.c"
-for mod in $MODULES; do
-    $CC -c "$PROJECT_ROOT/src/$mod" -o "$BUILD_DIR/${mod%.c}.o" $INCLUDES_IEC -std=c99
+for src in $MODULE_SRCS; do
+    obj="$OBJ_DIR/$(basename ${src%.c}).o"
+    echo "Компиляция: $src -> $obj"
+    $CC -c "$src" -o "$obj" $INCLUDES_IEC -std=c99
+    if [ $? -ne 0 ]; then
+        echo "❌ Ошибка компиляции $src"
+        exit 1
+    fi
 done
 
-# Собираем архив
-$AR rcs "$LIB_DIR/libmyports.a" $BUILD_DIR/*.o
+# Собираем архив из объектных файлов в изолированной папке obj
+$AR rcs "$LIB_DIR/libmyports.a" $OBJ_DIR/*.o
 echo "✅ Библиотека libmyports.a готова."
 
 # 5. Финальная сборка сервера

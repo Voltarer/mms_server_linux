@@ -11,7 +11,7 @@
 #include <sys/socket.h>
 #include <linux/rtnetlink.h>
 #include <unistd.h>
-#include <stdbool.h>  // <-- Добавлено для поддержки типа bool
+#include <stdbool.h>  
 
 #include "models/include/common.h"
 #include "models/include/status.h"
@@ -129,6 +129,15 @@ static MmsDataAccessError mtuWriteHandler(DataAttribute* attr, MmsValue* value, 
     if (MmsValue_getType(value) == MMS_INTEGER) {
         int32_t new_mtu = MmsValue_toInt32(value);
         int port_idx = (int)(intptr_t)parameter;
+        
+        // --- ПРОВЕРКА ГРАНИЦ MTU ---
+        if (new_mtu < 64 || new_mtu > 16383) {
+            printf("MMS: [ОШИБКА] Попытка установить MTU %d для порта %d. Допустимый диапазон: 64..16383\n", 
+                   new_mtu, port_idx + 1);
+            // Возвращаем стандартную ошибку MMS: неверное значение объекта
+            return DATA_ACCESS_ERROR_OBJECT_VALUE_INVALID; 
+        }
+
         printf("MMS: MTU порта %d -> %d\n", port_idx + 1, new_mtu);
         if (set_hardware_mtu(port_idx, new_mtu) == 0) {
             g_pending_mtu_update[port_idx] = new_mtu;

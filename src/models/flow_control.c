@@ -29,9 +29,7 @@ int get_hardware_flow_control(int port_idx) {
     ifr.ifr_data = (caddr_t)&epause;
 
     if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
-        // Если не поддерживается, не логируем как ошибку, а возвращаем 0 или -1? 
-        // Сейчас мы логируем и возвращаем -1, но может быть нормально, что не поддерживается.
-        // Для единообразия оставим логирование, но можно сделать тише.
+
         LOG_ERROR_PORT_DETAILED(port_idx, "ioctl(ETHTOOL_GPAUSEPARAM)");
         close(sockfd);
         return -1;
