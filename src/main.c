@@ -22,6 +22,8 @@
 #include "models/include/mtu.h"
 #include "models/include/flow_control.h"
 #include "models/include/error.h"
+#include "models/include/rxcnt.h"
+#include "models/include/txcnt.h"
 
 #define NUM_PORTS 28
 
@@ -134,7 +136,6 @@ static MmsDataAccessError mtuWriteHandler(DataAttribute* attr, MmsValue* value, 
         if (new_mtu < 64 || new_mtu > 16383) {
             printf("MMS: [ОШИБКА] Попытка установить MTU %d для порта %d. Допустимый диапазон: 64..16383\n", 
                    new_mtu, port_idx + 1);
-            // Возвращаем стандартную ошибку MMS: неверное значение объекта
             return DATA_ACCESS_ERROR_OBJECT_VALUE_INVALID; 
         }
 
@@ -154,7 +155,6 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
     
     get_hardware_ifname(port_idx, ifname, sizeof(ifname));
 
-    // Добавлено: Безопасный выход, если интерфейс не существует физически в Linux
     if (!is_port_present(port_idx)) {
         printf("Init port %d: [ABSENT] (Интерфейс %s не найден в ОС)\n", port_idx + 1, ifname);
         DataAttribute* da_portnam = get_port_attr("PortNam.setVal", port_idx);
@@ -297,6 +297,20 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
             IedServer_updateBooleanAttributeValue(server, da_flow_st, false);
         }
     }
+
+    // Начальный статус RxCnt (RxCnt.stVal)
+    int64_t rx_st = get_hardware_rx_cnt(port_idx);
+    DataAttribute* da_rx_st = get_port_attr("RxCnt.stVal", port_idx);
+    if (da_rx_st) {
+        IedServer_updateInt64AttributeValue(server, da_rx_st, (rx_st >= 0) ? rx_st : 0);
+    }
+
+    // Начальный статус TxCnt (TxCnt.stVal)
+    int64_t tx_st = get_hardware_tx_cnt(port_idx);
+    DataAttribute* da_tx_st = get_port_attr("TxCnt.stVal", port_idx);
+    if (da_tx_st) {
+        IedServer_updateInt64AttributeValue(server, da_tx_st, (tx_st >= 0) ? tx_st : 0);
+    }
 }
 
 int main(int argc, char** argv) {
@@ -341,13 +355,15 @@ int main(int argc, char** argv) {
         IedServer_lockDataModel(g_iedServer);
 
         for (int i = 0; i < NUM_PORTS; i++) {
-            // Добавлено: Если физического интерфейса в системе нет, выставляем INVALID-качество и скипаем ioctl-опрос
+            // Если физического интерфейса в системе нет, выставляем INVALID-качество и скипаем опросы
             if (!is_port_present(i)) {
                 IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Mau.stVal", i), 2); // DOWN
                 update_quality_and_time(g_iedServer, i, "Mau", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "AutoNgt", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "Mtu", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "FlowControl", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "RxCnt", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "TxCnt", false, timeMs);
                 continue;
             }
 
@@ -400,6 +416,22 @@ int main(int argc, char** argv) {
                 IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("FlowControl.stVal", i), flow == 1);
             }
             update_quality_and_time(g_iedServer, i, "FlowControl", flow_valid, timeMs);
+
+            // Опрос счетчика принятых пакетов (RxCnt)
+            int64_t rx_cnt = get_hardware_rx_cnt(i);
+            bool rx_cnt_valid = (rx_cnt != -1);
+            if (rx_cnt_valid) {
+                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("RxCnt.stVal", i), rx_cnt);
+            }
+            update_quality_and_time(g_iedServer, i, "RxCnt", rx_cnt_valid, timeMs);
+
+            // Опрос счетчика переданных пакетов (TxCnt)
+            int64_t tx_cnt = get_hardware_tx_cnt(i);
+            bool tx_cnt_valid = (tx_cnt != -1);
+            if (tx_cnt_valid) {
+                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("TxCnt.stVal", i), tx_cnt);
+            }
+            update_quality_and_time(g_iedServer, i, "TxCnt", tx_cnt_valid, timeMs);
         }
 
         IedServer_unlockDataModel(g_iedServer);

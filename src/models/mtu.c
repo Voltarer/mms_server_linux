@@ -13,7 +13,7 @@
 #include "common.h"
 #include "include/error.h"
 
-// Вспомогательная функция: отправка и получение ответа
+// отправка и получение ответа
 static int netlink_request(int nl_sock, const void *req, size_t req_len,
                            void *resp, size_t *resp_len) {
     struct sockaddr_nl addr = {
@@ -162,7 +162,6 @@ int set_hardware_mtu(int port_idx, int mtu_value) {
     req.ifi.ifi_index = ifindex;
     req.ifi.ifi_change = 0; 
 
-    // Добавляем атрибут по правилам выравнивания Netlink
     struct rtattr *rta = (struct rtattr *)(((char *)&req) + NLMSG_ALIGN(req.nh.nlmsg_len));
     rta->rta_type = IFLA_MTU;
     rta->rta_len = RTA_LENGTH(sizeof(unsigned int));

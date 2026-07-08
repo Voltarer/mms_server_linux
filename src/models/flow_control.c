@@ -22,14 +22,16 @@ int get_hardware_flow_control(int port_idx) {
     }
 
     struct ifreq ifr;
-    struct ethtool_pauseparam epause;
+    memset(&ifr, 0, sizeof(ifr)); // ОШИБКА БЫЛА ЗДЕСЬ: обнуляем память
     get_hardware_ifname(port_idx, ifr.ifr_name, IFNAMSIZ);
 
+    struct ethtool_pauseparam epause;
+    memset(&epause, 0, sizeof(epause)); // ОШИБКА БЫЛА ЗДЕСЬ
+    
     epause.cmd = ETHTOOL_GPAUSEPARAM;
     ifr.ifr_data = (caddr_t)&epause;
 
     if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
-
         LOG_ERROR_PORT_DETAILED(port_idx, "ioctl(ETHTOOL_GPAUSEPARAM)");
         close(sockfd);
         return -1;
@@ -47,14 +49,20 @@ int set_hardware_flow_control(int port_idx, int enable) {
     }
 
     struct ifreq ifr;
-    struct ethtool_pauseparam epause;
+    memset(&ifr, 0, sizeof(ifr)); 
     get_hardware_ifname(port_idx, ifr.ifr_name, IFNAMSIZ);
 
-    // Сначала получаем текущие параметры, чтобы не сбросить другие флаги
+    struct ethtool_pauseparam epause;
+    memset(&epause, 0, sizeof(epause)); 
+
     epause.cmd = ETHTOOL_GPAUSEPARAM;
     ifr.ifr_data = (caddr_t)&epause;
-    // Не проверяем ошибку, т.к. может не поддерживаться, но тогда установим заново
-    ioctl(sockfd, SIOCETHTOOL, &ifr);
+    
+    if (ioctl(sockfd, SIOCETHTOOL, &ifr) < 0) {
+        LOG_ERROR_PORT_DETAILED(port_idx, "ioctl(ETHTOOL_GPAUSEPARAM) перед set");
+        close(sockfd);
+        return -1; 
+    }
 
     epause.cmd = ETHTOOL_SPAUSEPARAM;
     epause.rx_pause = enable ? 1 : 0;
