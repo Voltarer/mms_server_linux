@@ -24,7 +24,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="1" doName="FlowControl" fc="ST"/>
@@ -32,7 +32,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="PortNum" fc="SP"/>	
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="AutoNgt" fc="ST"/>						
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="2" doName="FlowControl" fc="ST"/>
@@ -40,7 +40,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="3" doName="FlowControl" fc="ST"/>
@@ -48,7 +48,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="4" doName="FlowControl" fc="ST"/>
@@ -56,7 +56,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="5" doName="FlowControl" fc="ST"/>
@@ -64,7 +64,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="6" doName="FlowControl" fc="ST"/>
@@ -72,7 +72,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="7" doName="FlowControl" fc="ST"/>
@@ -80,7 +80,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="8" doName="FlowControl" fc="ST"/>
@@ -88,7 +88,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="9" doName="FlowControl" fc="ST"/>
@@ -96,7 +96,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="10" doName="FlowControl" fc="ST"/>
@@ -104,7 +104,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="11" doName="FlowControl" fc="ST"/>
@@ -112,7 +112,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="12" doName="FlowControl" fc="ST"/>
@@ -120,7 +120,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="13" doName="FlowControl" fc="ST"/>
@@ -128,7 +128,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="14" doName="FlowControl" fc="ST"/>
@@ -136,7 +136,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="15" doName="FlowControl" fc="ST"/>
@@ -144,7 +144,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="16" doName="FlowControl" fc="ST"/>
@@ -152,7 +152,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="17" doName="FlowControl" fc="ST"/>
@@ -160,7 +160,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="18" doName="FlowControl" fc="ST"/>
@@ -168,7 +168,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="19" doName="FlowControl" fc="ST"/>
@@ -176,7 +176,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="20" doName="FlowControl" fc="ST"/>
@@ -184,7 +184,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="21" doName="FlowControl" fc="ST"/>
@@ -192,7 +192,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="22" doName="FlowControl" fc="ST"/>
@@ -200,7 +200,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="23" doName="FlowControl" fc="ST"/>
@@ -208,7 +208,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="24" doName="FlowControl" fc="ST"/>
@@ -216,7 +216,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="FlowControl" fc="ST"/>
@@ -224,7 +224,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="FlowControl" fc="ST"/>
@@ -232,7 +232,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="FlowControl" fc="ST"/>
@@ -240,7 +240,7 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="MauCfg" fc="ST"/>
+							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="FlowControl" fc="ST"/>
@@ -602,11 +602,11 @@
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_ING_W_0" cdc="ING" iedType="EES">
-			<DA name="setVal" bType="Enum" type="MauTypeKind" fc="SP" />
+			<DA name="setVal" bType="Enum" type="MauTypeKind" valKind="Set" fc="SP" />
 			<DA name="d" bType="VisString255" fc="DC" />
 			<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
-
+		
 		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ING" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
 		</DOType>
