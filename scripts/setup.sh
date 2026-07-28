@@ -71,6 +71,10 @@ if ! command -v wget &>/dev/null && ! command -v curl &>/dev/null; then
 fi
 echo "✅ wget/curl найдены."
 ######################################################################
+rm -f "$PROJECT_ROOT/src/static_model.c"  # Удаляем старую версию static_model.c, если она существует
+
+rm -f "$PROJECT_ROOT/src/static_model.h"  # Удаляем старую версию static_model.h, если она существует
+
 # Сборка статичной модели
 if [ -f "$GEN_JAR" ]; then
     echo "Генерация статической модели из $ICD_FILE..."

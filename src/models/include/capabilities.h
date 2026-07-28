@@ -4,16 +4,15 @@
 #include <stdint.h>   // int32_t
 
 /**
- * Получить битовую маску поддерживаемых режимов.
- * Биты: 0 – 10baseT/Half, 1 – 10baseT/Full, 2 – 100baseT/Half,
- *       3 – 100baseT/Full, 4 – 1000baseT/Half, 5 – 1000baseT/Full.
+ * Получить максимальный поддерживаемый режим по стандарту RFC 4836 (dot3MauType).
+ * Возвращает константу типа MAU (например, 30 для 1000BaseT-FD, 16 для 100BaseTX-FD).
  * @param port_idx  индекс порта
- * @return          битовая маска или -1 при ошибке
+ * @return          значение MAU Type (RFC 4836) или -1 при ошибке
  */
 int32_t get_hardware_capabilities(int port_idx);
 
 /**
- * Вывести на печать строку с перечислением поддерживаемых режимов.
+ * Вывести на печать строку с перечислением поддерживаемых физических режимов.
  * @param port_idx  индекс порта
  */
 void print_hardware_capabilities_string(int port_idx);

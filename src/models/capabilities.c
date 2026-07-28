@@ -14,6 +14,14 @@
 #include "common.h"
 #include "include/error.h"
 
+// Константы RFC 4836
+#define MAU_TYPE_10BASET_HD      11
+#define MAU_TYPE_10BASET_FD      14
+#define MAU_TYPE_100BASETX_HD    15
+#define MAU_TYPE_100BASETX_FD    16
+#define MAU_TYPE_1000BASET_HD    29
+#define MAU_TYPE_1000BASET_FD    30
+
 int32_t get_hardware_capabilities(int port_idx) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
@@ -36,18 +44,19 @@ int32_t get_hardware_capabilities(int port_idx) {
     }
     close(sockfd);
 
-    int32_t capabilities = 0;
-    if (ecmd.supported & SUPPORTED_10baseT_Half)  capabilities |= (1 << 0);
-    if (ecmd.supported & SUPPORTED_10baseT_Full)  capabilities |= (1 << 1);
-    if (ecmd.supported & SUPPORTED_100baseT_Half) capabilities |= (1 << 2);
-    if (ecmd.supported & SUPPORTED_100baseT_Full) capabilities |= (1 << 3);
-    if (ecmd.supported & SUPPORTED_1000baseT_Half) capabilities |= (1 << 4);
-    if (ecmd.supported & SUPPORTED_1000baseT_Full) capabilities |= (1 << 5);
+    // Возвращаем максимально поддерживаемый режим по RFC 4836 (сверху вниз)
+    if (ecmd.supported & SUPPORTED_1000baseT_Full) return MAU_TYPE_1000BASET_FD;
+    if (ecmd.supported & SUPPORTED_1000baseT_Half) return MAU_TYPE_1000BASET_HD;
+    if (ecmd.supported & SUPPORTED_100baseT_Full) return MAU_TYPE_100BASETX_FD;
+    if (ecmd.supported & SUPPORTED_100baseT_Half) return MAU_TYPE_100BASETX_HD;
+    if (ecmd.supported & SUPPORTED_10baseT_Full) return MAU_TYPE_10BASET_FD;
+    if (ecmd.supported & SUPPORTED_10baseT_Half) return MAU_TYPE_10BASET_HD;
 
-    return capabilities;
+    return 0; // Ничего не поддерживается / Не удалось определить
 }
 
 void print_hardware_capabilities_string(int port_idx) {
+
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
         LOG_ERROR_DETAILED("socket");

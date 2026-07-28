@@ -3,12 +3,19 @@
 Минимальный проект MMS-сервера (IEC 61850) с интеграцией аппаратных
 портов коммутатора Realtek.
 
-![Version](https://img.shields.io/badge/version-3.0.4-blue)
+![Version](https://img.shields.io/badge/version-3.0.6-blue)
 
 ## История изменений
 
 <details>
   <summary><b>Посмотреть историю версий (Changelog)</b></summary>
+
+  ### v3.0.6
+  * 
+
+  ### v3.0.5
+  * добавлена функция для rx и txcnt 
+  * исправлена ошибка Mtu.stVal, которая не позволяла вычитывать нормально данные из коммутатора
 
   ### v3.0.4
   * исправлена ошибка работы mtu

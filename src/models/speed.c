@@ -9,10 +9,19 @@
 #include <linux/ethtool.h>
 #include <net/if.h>
 #include <errno.h>
+#include <stdint.h>
 
 #include "speed.h"
 #include "common.h"
 #include "include/error.h"
+
+// Константы RFC 4836
+#define MAU_TYPE_10BASET_HD      11
+#define MAU_TYPE_10BASET_FD      14
+#define MAU_TYPE_100BASETX_HD    15
+#define MAU_TYPE_100BASETX_FD    16
+#define MAU_TYPE_1000BASET_HD    29
+#define MAU_TYPE_1000BASET_FD    30
 
 int get_hardware_port_speed(int port_idx) {
 #ifndef _WIN32
@@ -37,20 +46,31 @@ int get_hardware_port_speed(int port_idx) {
     }
 
     close(sockfd);
-    int speed = ethtool_cmd_speed(&ecmd);
     
-    if (speed == 65535) {
-        fprintf(stderr, "[ERROR] Port %d (%s): Некорректное значение скорости (65535)\n", port_idx, ifr.ifr_name);
-        return -1;
+    uint32_t speed = ethtool_cmd_speed(&ecmd);
+    uint8_t duplex = ecmd.duplex;
+    
+    if (speed == 65535 || speed == 0) {
+        return -1; // Линк в дауне или неизвестная скорость
     }
-    return speed;
+
+    // Маппинг в RFC 4836
+    if (speed == SPEED_1000) {
+        return (duplex == DUPLEX_FULL) ? MAU_TYPE_1000BASET_FD : MAU_TYPE_1000BASET_HD;
+    } else if (speed == SPEED_100) {
+        return (duplex == DUPLEX_FULL) ? MAU_TYPE_100BASETX_FD : MAU_TYPE_100BASETX_HD;
+    } else if (speed == SPEED_10) {
+        return (duplex == DUPLEX_FULL) ? MAU_TYPE_10BASET_FD : MAU_TYPE_10BASET_HD;
+    }
+
+    return -1; // Неизвестный стандарт
 #else
     LOG_ERROR("Функция не поддерживается на Windows");
     return -1;
 #endif
 }
 
-int set_hardware_port_speed(int port_idx, int mode_val) {
+int set_hardware_port_speed(int port_idx, int mau_type) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
         LOG_ERROR_DETAILED("socket");
@@ -70,26 +90,21 @@ int set_hardware_port_speed(int port_idx, int mode_val) {
         return -1;
     }
 
-    int speed = SPEED_100;
-    int duplex = DUPLEX_FULL;
+    uint32_t speed = SPEED_100;
+    uint8_t duplex = DUPLEX_FULL;
 
-    switch(mode_val) {
-        case 1:  speed = SPEED_10;   duplex = DUPLEX_HALF; break; 
-        case 2:  speed = SPEED_10;   duplex = DUPLEX_FULL; break; 
-        case 4:  speed = SPEED_100;  duplex = DUPLEX_HALF; break; 
-        case 8:  speed = SPEED_100;  duplex = DUPLEX_FULL; break; 
-        case 16: speed = SPEED_1000; duplex = DUPLEX_HALF; break; 
-        case 32: speed = SPEED_1000; duplex = DUPLEX_FULL; break; 
+    // Расшифровка из RFC 4836
+    switch(mau_type) {
+        case MAU_TYPE_10BASET_HD:   speed = SPEED_10;   duplex = DUPLEX_HALF; break; 
+        case MAU_TYPE_10BASET_FD:   speed = SPEED_10;   duplex = DUPLEX_FULL; break; 
+        case MAU_TYPE_100BASETX_HD: speed = SPEED_100;  duplex = DUPLEX_HALF; break; 
+        case MAU_TYPE_100BASETX_FD: speed = SPEED_100;  duplex = DUPLEX_FULL; break; 
+        case MAU_TYPE_1000BASET_HD: speed = SPEED_1000; duplex = DUPLEX_HALF; break; 
+        case MAU_TYPE_1000BASET_FD: speed = SPEED_1000; duplex = DUPLEX_FULL; break; 
         default:
-            if (mode_val == 10 || mode_val == 100 || mode_val == 1000) {
-                speed = mode_val;
-                duplex = DUPLEX_FULL; 
-            } else {
-                fprintf(stderr, "[ERROR] Port %d (%s): Неподдерживаемый режим скорости %d\n", port_idx, ifr.ifr_name, mode_val);
-                close(sockfd);
-                return -1;
-            }
-            break;
+            fprintf(stderr, "[ERROR] Port %d (%s): Неподдерживаемый MAU Type %d\n", port_idx, ifr.ifr_name, mau_type);
+            close(sockfd);
+            return -1;
     }
 
     ethtool_cmd_speed_set(&ecmd, speed);
@@ -105,7 +120,7 @@ int set_hardware_port_speed(int port_idx, int mode_val) {
     }
 
     close(sockfd);
-    printf("Hardware: Для %s установлен режим %d Mbps / %s Duplex\n", 
-           ifr.ifr_name, speed, (duplex == DUPLEX_FULL) ? "FULL" : "HALF");
+    printf("Hardware: Для %s установлен режим %d Mbps / %s Duplex (MAU: %d)\n", 
+           ifr.ifr_name, speed, (duplex == DUPLEX_FULL) ? "FULL" : "HALF", mau_type);
     return 0;
 }

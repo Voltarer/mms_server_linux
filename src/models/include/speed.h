@@ -2,20 +2,18 @@
 #define SPEED_H
 
 /**
- * Получить текущую скорость порта (в Мбит/с).
+ * Получить текущий режим работы порта в виде MAU Type (RFC 4836).
  * @param port_idx  индекс порта
- * @return          скорость (10, 100, 1000) или -1 при ошибке
+ * @return          код MAU Type (например, 11, 14, 15, 16, 29, 30) или -1 при ошибке
  */
 int get_hardware_port_speed(int port_idx);
 
 /**
- * Установить скорость и дуплекс.
+ * Установить скорость и дуплекс порта через код MAU Type (RFC 4836).
  * @param port_idx  индекс порта
- * @param mode_val  код режима (1 – 10/Half, 2 – 10/Full, 4 – 100/Half,
- *                  8 – 100/Full, 16 – 1000/Half, 32 – 1000/Full,
- *                  также можно передать 10, 100 или 1000 для Full Duplex)
+ * @param mau_type  код типа среды (11, 14, 15, 16, 29, 30)
  * @return          0 при успехе, -1 при ошибке
  */
-int set_hardware_port_speed(int port_idx, int mode_val);
+int set_hardware_port_speed(int port_idx, int mau_type);
 
 #endif // SPEED_H

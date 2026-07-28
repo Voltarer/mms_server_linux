@@ -25,6 +25,11 @@
 #include "models/include/rxcnt.h"
 #include "models/include/txcnt.h"
 
+#include "models/include/channel.h"
+#include "models/include/traffic_errors.h"
+#include "models/include/health.h"
+#include "models/include/mirroring.h"
+
 #define NUM_PORTS 28
 
 static IedServer g_iedServer = NULL;
@@ -89,11 +94,30 @@ static MmsDataAccessError adminCfgWriteHandler(DataAttribute* attr, MmsValue* va
 
 static MmsDataAccessError speedWriteHandler(DataAttribute* attr, MmsValue* value, ClientConnection connection, void* parameter) {
     if (MmsValue_getType(value) == MMS_INTEGER) {
-        int32_t mode_val = MmsValue_toInt32(value);
+        int32_t mau_type = MmsValue_toInt32(value);
         int port_idx = (int)(intptr_t)parameter;
-        printf("MMS: Получена команда режима %d для порта %d\n", mode_val, port_idx + 1);
-        if (set_hardware_port_speed(port_idx, mode_val) == 0) {
-            g_pending_speed_update[port_idx] = mode_val;
+        
+        // --- ПРОВЕРКА АВТОСОГЛАСОВАНИЯ ---
+        DataAttribute* da_autongt = get_port_attr("AutoNgtCfg.setVal", port_idx);
+        if (da_autongt) {
+            MmsValue* auto_val = IedServer_getAttributeValue(g_iedServer, da_autongt);
+            if (auto_val && MmsValue_getBoolean(auto_val)) {
+                printf("MMS: [ОТКЛОНЕНО] Попытка изменить MauCfg (скорость) при включенном AutoNgtCfg на порту %d\n", port_idx + 1);
+                return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED;
+            }
+        }
+
+        // Проверка допустимости значения (опционально, фильтруем только нужные MAU)
+        if (mau_type != 11 && mau_type != 14 && mau_type != 15 && 
+            mau_type != 16 && mau_type != 29 && mau_type != 30) {
+            printf("MMS: [ОШИБКА] Неизвестный MAU Type %d (не по RFC 4836)\n", mau_type);
+            return DATA_ACCESS_ERROR_OBJECT_VALUE_INVALID;
+        }
+
+        printf("MMS: Получена команда MAU Type %d (RFC 4836) для порта %d\n", mau_type, port_idx + 1);
+        
+        if (set_hardware_port_speed(port_idx, mau_type) == 0) {
+            g_pending_speed_update[port_idx] = mau_type;
             return DATA_ACCESS_ERROR_SUCCESS;
         }
         return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED;
@@ -179,18 +203,6 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
         } else {
             fprintf(stderr, "[WARN] Port %d (%s): Не удалось получить MAC, установлен по умолчанию\n", port_idx + 1, ifname);
             IedServer_updateVisibleStringAttributeValue(server, da_mac, "00:00:00:00:00:00");
-        }
-    }
-
-    // Возможности (capabilities)
-    int32_t caps = get_hardware_capabilities(port_idx);
-    DataAttribute* da_caps = get_port_attr("MauCfgCap.setVal", port_idx);
-    if (da_caps) {
-        if (caps != -1) {
-            IedServer_updateInt32AttributeValue(server, da_caps, caps);
-        } else {
-            fprintf(stderr, "[WARN] Port %d (%s): Не удалось получить возможности, установлено 0\n", port_idx + 1, ifname);
-            IedServer_updateInt32AttributeValue(server, da_caps, 0);
         }
     }
 
@@ -300,18 +312,29 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
 
     // Начальный статус RxCnt (RxCnt.stVal)
     int64_t rx_st = get_hardware_rx_cnt(port_idx);
-    DataAttribute* da_rx_st = get_port_attr("RxCnt.stVal", port_idx);
+    DataAttribute* da_rx_st = get_port_attr("RxCnt.actVal", port_idx);
     if (da_rx_st) {
         IedServer_updateInt64AttributeValue(server, da_rx_st, (rx_st >= 0) ? rx_st : 0);
     }
 
     // Начальный статус TxCnt (TxCnt.stVal)
     int64_t tx_st = get_hardware_tx_cnt(port_idx);
-    DataAttribute* da_tx_st = get_port_attr("TxCnt.stVal", port_idx);
+    DataAttribute* da_tx_st = get_port_attr("TxCnt.actVal", port_idx);
     if (da_tx_st) {
         IedServer_updateInt64AttributeValue(server, da_tx_st, (tx_st >= 0) ? tx_st : 0);
     }
-}
+
+    DataAttribute* da_d = get_port_attr("MauCfg.d", port_idx);
+    if (da_d) {
+        IedServer_updateVisibleStringAttributeValue(server, da_d, "Port speed configuration");
+    }
+
+    DataAttribute* da_dU = get_port_attr("MauCfg.dU", port_idx);
+    if (da_dU) {
+        IedServer_updateVisibleStringAttributeValue(server, da_dU, "Настройка скорости порта");
+    }
+
+    }
 
 int main(int argc, char** argv) {
     signal(SIGINT, sigint_handler);
@@ -364,12 +387,21 @@ int main(int argc, char** argv) {
                 update_quality_and_time(g_iedServer, i, "FlowControl", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "RxCnt", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "TxCnt", false, timeMs);
+
+                update_quality_and_time(g_iedServer, i, "ChLiv", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "RedChLiv", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "InOv", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "OutOv", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "FerPort", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "Health", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "Beh", false, timeMs);
+                update_quality_and_time(g_iedServer, i, "Mir", false, timeMs);
                 continue;
             }
 
             // Обработка отложенных обновлений (MMS -> Железо)
             if (g_pending_speed_update[i] != -1) {
-                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.stVal", i), g_pending_speed_update[i]);
+                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.setVal", i), g_pending_speed_update[i]);
                 g_pending_speed_update[i] = -1;
             }
 
@@ -421,7 +453,7 @@ int main(int argc, char** argv) {
             int64_t rx_cnt = get_hardware_rx_cnt(i);
             bool rx_cnt_valid = (rx_cnt != -1);
             if (rx_cnt_valid) {
-                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("RxCnt.stVal", i), rx_cnt);
+                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("RxCnt.actVal", i), rx_cnt);
             }
             update_quality_and_time(g_iedServer, i, "RxCnt", rx_cnt_valid, timeMs);
 
@@ -429,9 +461,53 @@ int main(int argc, char** argv) {
             int64_t tx_cnt = get_hardware_tx_cnt(i);
             bool tx_cnt_valid = (tx_cnt != -1);
             if (tx_cnt_valid) {
-                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("TxCnt.stVal", i), tx_cnt);
+                IedServer_updateInt64AttributeValue(g_iedServer, get_port_attr("TxCnt.actVal", i), tx_cnt);
             }
             update_quality_and_time(g_iedServer, i, "TxCnt", tx_cnt_valid, timeMs);
+
+            // Модуль: Channel (Каналы) 
+            int chliv = get_hardware_chliv(i);
+            bool chliv_valid = (chliv != -1);
+            if (chliv_valid) IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("ChLiv.stVal", i), chliv == 1);
+            update_quality_and_time(g_iedServer, i, "ChLiv", chliv_valid, timeMs);
+
+            int redchliv = get_hardware_redchliv(i);
+            bool redchliv_valid = (redchliv != -1);
+            if (redchliv_valid) IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("RedChLiv.stVal", i), redchliv == 1);
+            update_quality_and_time(g_iedServer, i, "RedChLiv", redchliv_valid, timeMs);
+
+            // Модуль: Traffic Errors (Ошибки и переполнения)
+            int inov = get_hardware_in_ov(i);
+            bool inov_valid = (inov != -1);
+            if (inov_valid) IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("InOv.stVal", i), inov == 1);
+            update_quality_and_time(g_iedServer, i, "InOv", inov_valid, timeMs);
+
+            int outov = get_hardware_out_ov(i);
+            bool outov_valid = (outov != -1);
+            if (outov_valid) IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("OutOv.stVal", i), outov == 1);
+            update_quality_and_time(g_iedServer, i, "OutOv", outov_valid, timeMs);
+
+            int32_t fer = get_hardware_fer_port(i);
+            bool fer_valid = (fer != -1);
+            if (fer_valid) IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("FerPort.stVal", i), fer);
+            update_quality_and_time(g_iedServer, i, "FerPort", fer_valid, timeMs);
+
+            // Модуль: Health & Behavior (Здоровье и Поведение)
+            int health = get_hardware_health(i);
+            bool health_valid = (health != -1);
+            if (health_valid) IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Health.stVal", i), health);
+            update_quality_and_time(g_iedServer, i, "Health", health_valid, timeMs);
+
+            int beh = get_hardware_beh(i);
+            bool beh_valid = (beh != -1);
+            if (beh_valid) IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Beh.stVal", i), beh);
+            update_quality_and_time(g_iedServer, i, "Beh", beh_valid, timeMs);
+
+            // Модуль: Mirroring (Зеркалирование)
+            int mir = get_hardware_mir(i);
+            bool mir_valid = (mir != -1);
+            if (mir_valid) IedServer_updateBooleanAttributeValue(g_iedServer, get_port_attr("Mir.stVal", i), mir == 1);
+            update_quality_and_time(g_iedServer, i, "Mir", mir_valid, timeMs);
         }
 
         IedServer_unlockDataModel(g_iedServer);
