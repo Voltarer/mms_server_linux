@@ -16,16 +16,6 @@ echo "---------------------------------------------------------"
 echo "Выбрана сборка под MIPS"
 echo "Корень проекта: $PROJECT_ROOT"
 
-echo "--- Очистка старой сборки ---"
-if [ -d "$LIB_PATH" ]; then
-    cd "$LIB_PATH" && make clean >/dev/null 2>&1 && cd "$PROJECT_ROOT"
-fi
-
-# Полностью удаляем директорию build со всем содержимым
-rm -rf "$BUILD_DIR"
-# Удаляем старую библиотеку модулей
-rm -f "$LIB_DIR/libmyports.a"
-
 # Пути инклудов
 INCLUDES_IEC="-I$LIB_PATH/src/iec61850/inc \
               -I$LIB_PATH/src/mms/inc \

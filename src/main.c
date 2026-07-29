@@ -98,31 +98,83 @@ static MmsDataAccessError speedWriteHandler(DataAttribute* attr, MmsValue* value
         int port_idx = (int)(intptr_t)parameter;
         
         // --- ПРОВЕРКА АВТОСОГЛАСОВАНИЯ ---
-        DataAttribute* da_autongt = get_port_attr("AutoNgtCfg.setVal", port_idx);
+        DataAttribute* da_autongt = get_port_attr("AutoNgtCfg.setVal", port_idx); //
         if (da_autongt) {
-            MmsValue* auto_val = IedServer_getAttributeValue(g_iedServer, da_autongt);
+            MmsValue* auto_val = IedServer_getAttributeValue(g_iedServer, da_autongt); //[cite: 1]
             if (auto_val && MmsValue_getBoolean(auto_val)) {
-                printf("MMS: [ОТКЛОНЕНО] Попытка изменить MauCfg (скорость) при включенном AutoNgtCfg на порту %d\n", port_idx + 1);
-                return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED;
+                printf("MMS: [ОТКЛОНЕНО] Попытка изменить MauCfg (скорость) при включенном AutoNgtCfg на порту %d\n", port_idx + 1); //[cite: 1]
+                return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED; //[cite: 1]
             }
         }
 
-        // Проверка допустимости значения (опционально, фильтруем только нужные MAU)
+        // Проверка допустимости значения (фильтруем только поддерживаемые MAU)
         if (mau_type != 11 && mau_type != 14 && mau_type != 15 && 
             mau_type != 16 && mau_type != 29 && mau_type != 30) {
-            printf("MMS: [ОШИБКА] Неизвестный MAU Type %d (не по RFC 4836)\n", mau_type);
+            
+            if (mau_type == 1) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(Unknown) is non-supportable\n", mau_type);
+            } else if (mau_type == 2) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(AUI) is non-supportable\n", mau_type);
+            } else if (mau_type == 3) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10Base5) is non-supportable\n", mau_type);
+            } else if (mau_type == 4) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10Base2) is non-supportable\n", mau_type);
+            } else if (mau_type == 5) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10BaseT) is non-supportable\n", mau_type);
+            } else if (mau_type == 6) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10BaseFO) is non-supportable\n", mau_type);
+            } else if (mau_type == 7) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10Broad36) is non-supportable\n", mau_type);
+            } else if (mau_type == 8) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10BaseT-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 9) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10BaseT-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 10) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10base-t) is non-supportable\n", mau_type);
+            } else if (mau_type == 12) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(100Base-TX-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 13) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(100Base-FX-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 17) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-X-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 18) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-X-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 19) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-LX-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 20) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-LX-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 21) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-SX-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 22) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-SX-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 23) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-CX-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 24) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-CX-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 25) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-T-HD) is non-supportable\n", mau_type);
+            } else if (mau_type == 26) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(1000Base-T-FD) is non-supportable\n", mau_type);
+            } else if (mau_type == 27) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10GBase-X) is non-supportable\n", mau_type);
+            } else if (mau_type == 28) {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10GBase-LX4) is non-supportable\n", mau_type);
+            } else {
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d is non-supportable\n", mau_type);
+            }
+            
             return DATA_ACCESS_ERROR_OBJECT_VALUE_INVALID;
         }
 
-        printf("MMS: Получена команда MAU Type %d (RFC 4836) для порта %d\n", mau_type, port_idx + 1);
+        printf("MMS: Получена команда MAU Type %d (RFC 4836) для порта %d\n", mau_type, port_idx + 1); //[cite: 1]
         
-        if (set_hardware_port_speed(port_idx, mau_type) == 0) {
-            g_pending_speed_update[port_idx] = mau_type;
-            return DATA_ACCESS_ERROR_SUCCESS;
+        if (set_hardware_port_speed(port_idx, mau_type) == 0) { //[cite: 1]
+            g_pending_speed_update[port_idx] = mau_type; //[cite: 1]
+            return DATA_ACCESS_ERROR_SUCCESS; //[cite: 1]
         }
-        return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED;
+        return DATA_ACCESS_ERROR_OBJECT_ACCESS_DENIED; //[cite: 1]
     }
-    return DATA_ACCESS_ERROR_TYPE_INCONSISTENT;
+    return DATA_ACCESS_ERROR_TYPE_INCONSISTENT; //[cite: 1]
 }
 
 static MmsDataAccessError autoNgtWriteHandler(DataAttribute* attr, MmsValue* value, ClientConnection connection, void* parameter) {
@@ -173,6 +225,24 @@ static MmsDataAccessError mtuWriteHandler(DataAttribute* attr, MmsValue* value, 
     return DATA_ACCESS_ERROR_TYPE_INCONSISTENT;
 }
 
+static void init_do_descriptions(IedServer server, int port_idx, const char* do_name, const char* d_val, const char* du_val) {
+    char attr_path[128];
+    
+    // Инициализация атрибута d
+    snprintf(attr_path, sizeof(attr_path), "%s.d", do_name);
+    DataAttribute* da_d = get_port_attr(attr_path, port_idx);
+    if (da_d) {
+        // Добавлено приведение типа (char*)
+        IedServer_updateVisibleStringAttributeValue(server, da_d, (char*)d_val);
+    }
+
+    // Инициализация атрибута dU
+    snprintf(attr_path, sizeof(attr_path), "%s.dU", do_name);
+    DataAttribute* da_dU = get_port_attr(attr_path, port_idx);
+    if (da_dU) {
+        IedServer_updateVisibleStringAttributeValue(server, da_dU, (char*)du_val);
+    }
+}
 void initialize_static_port_attributes(IedServer server, int port_idx) {
     char ifname[16];
     char mac_address[18];
@@ -183,8 +253,6 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
         printf("Init port %d: [ABSENT] (Интерфейс %s не найден в ОС)\n", port_idx + 1, ifname);
         DataAttribute* da_portnam = get_port_attr("PortNam.setVal", port_idx);
         if (da_portnam) IedServer_updateVisibleStringAttributeValue(server, da_portnam, "ABSENT");
-        DataAttribute* da_status = get_port_attr("Mau.stVal", port_idx);
-        if (da_status) IedServer_updateInt32AttributeValue(server, da_status, 2); // DOWN
         return;
     }
 
@@ -266,17 +334,6 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
         }
     }
 
-    // Статус порта (Mau.stVal)
-    int status = get_hardware_port_status(port_idx);
-    DataAttribute* da_status = get_port_attr("Mau.stVal", port_idx);
-    if (da_status) {
-        if (status != -1) {
-            IedServer_updateInt32AttributeValue(server, da_status, status);
-        } else {
-            IedServer_updateInt32AttributeValue(server, da_status, 2);
-        }
-    }
-
     // Автосогласование статус (AutoNgt.stVal)
     int autongt_st = get_hardware_autongt(port_idx);
     DataAttribute* da_autongt_st = get_port_attr("AutoNgt.stVal", port_idx);
@@ -324,17 +381,34 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
         IedServer_updateInt64AttributeValue(server, da_tx_st, (tx_st >= 0) ? tx_st : 0);
     }
 
-    DataAttribute* da_d = get_port_attr("MauCfg.d", port_idx);
-    if (da_d) {
-        IedServer_updateVisibleStringAttributeValue(server, da_d, "Port speed configuration");
-    }
+    // Статусы и измерения
+    init_do_descriptions(server, port_idx, "NamPlt",      "Name plate", "Шильдик порта");
+    init_do_descriptions(server, port_idx, "ChLiv",       "Channel live status", "Статус активности канала");
+    init_do_descriptions(server, port_idx, "RedChLiv",    "Redundant channel live", "Статус резервного канала");
+    init_do_descriptions(server, port_idx, "OutOv",       "Output overload", "Перегрузка на выходе");
+    init_do_descriptions(server, port_idx, "InOv",        "Input overload", "Перегрузка на входе");
+    init_do_descriptions(server, port_idx, "RxCnt",       "Receive counter", "Счетчик принятых пакетов");
+    init_do_descriptions(server, port_idx, "TxCnt",       "Transmit counter", "Счетчик отправленных пакетов");
+    init_do_descriptions(server, port_idx, "FerPort",     "Frame error rate", "Частота ошибок кадров");
+    init_do_descriptions(server, port_idx, "AutoNgt",     "Auto-negotiation status", "Статус автосогласования");
+    init_do_descriptions(server, port_idx, "Mau",         "MAU type status", "Текущий тип MAU");
+    init_do_descriptions(server, port_idx, "Beh",         "Logical node behavior", "Поведение логического узла");
+    init_do_descriptions(server, port_idx, "Health",      "Logical node health", "Состояние здоровья узла");
+    init_do_descriptions(server, port_idx, "Mir",         "Port mirroring status", "Статус зеркалирования");
+    init_do_descriptions(server, port_idx, "Mtu",         "Current MTU size", "Текущий размер MTU");
+    init_do_descriptions(server, port_idx, "FlowControl", "Flow control status", "Статус управления потоком");
+    init_do_descriptions(server, port_idx, "PortNum",     "Port number", "Номер порта");
+    init_do_descriptions(server, port_idx, "PortMac",     "Port MAC address", "MAC-адрес порта");
 
-    DataAttribute* da_dU = get_port_attr("MauCfg.dU", port_idx);
-    if (da_dU) {
-        IedServer_updateVisibleStringAttributeValue(server, da_dU, "Настройка скорости порта");
-    }
-
-    }
+    // Конфигурационные параметры (Cfg)
+    init_do_descriptions(server, port_idx, "MtuCfg",         "MTU configuration", "Настройка MTU");
+    init_do_descriptions(server, port_idx, "FlowControlCfg", "Flow control config", "Настройка управления потоком");
+    init_do_descriptions(server, port_idx, "PortNam",        "Port name configuration", "Настройка имени порта");
+    init_do_descriptions(server, port_idx, "AutoNgtCfg",     "Auto-negotiation config", "Настройка автосогласования");
+    init_do_descriptions(server, port_idx, "MauCfg",         "Port speed/type config", "Настройка скорости/типа порта");
+    init_do_descriptions(server, port_idx, "AdminCfg",       "Admin state config", "Настройка административного статуса");
+    init_do_descriptions(server, port_idx, "InRef",          "Input reference", "Входная ссылка");
+}
 
 int main(int argc, char** argv) {
     signal(SIGINT, sigint_handler);
@@ -378,10 +452,7 @@ int main(int argc, char** argv) {
         IedServer_lockDataModel(g_iedServer);
 
         for (int i = 0; i < NUM_PORTS; i++) {
-            // Если физического интерфейса в системе нет, выставляем INVALID-качество и скипаем опросы
             if (!is_port_present(i)) {
-                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Mau.stVal", i), 2); // DOWN
-                update_quality_and_time(g_iedServer, i, "Mau", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "AutoNgt", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "Mtu", false, timeMs);
                 update_quality_and_time(g_iedServer, i, "FlowControl", false, timeMs);
@@ -421,12 +492,10 @@ int main(int argc, char** argv) {
             }
 
             // Опрос железа и обновление модели (Железо -> MMS)
-            int status = get_hardware_port_status(i);
-            bool status_valid = (status != -1);
-            if (status_valid) {
-                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("Mau.stVal", i), (int32_t)status);
+            int actual_speed = get_hardware_port_speed(i);
+            if (actual_speed != -1) {
+                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.setVal", i), (int32_t)actual_speed);
             }
-            update_quality_and_time(g_iedServer, i, "Mau", status_valid, timeMs);
 
             int autongt = get_hardware_autongt(i);
             bool autongt_valid = (autongt != -1);

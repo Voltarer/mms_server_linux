@@ -531,16 +531,19 @@
 		<DOType id="HIRSCHMANN_ETHSWITCH_LPL_0" cdc="LPL" iedType="EES">
 			<DA name="vendor" fc="DC" bType="VisString255" valKind="RO" />
 			<DA name="swRev" fc="DC" bType="VisString255" valKind="RO" />
-			<DA name="d" fc="DC" bType="VisString255" />
 			<DA name="lnNs" fc="EX" bType="VisString255" valKind="RO">
 				<Val>IEC 61850-7-4:2007</Val>
 			</DA>
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_0" cdc="SPS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO"/>
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO"/>
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO"/>
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPC_0" cdc="SPC" iedType="EES">
@@ -578,18 +581,24 @@
 			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" cdc="SPS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="BOOLEAN" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 		
 		<DOType id="HIRSCHMANN_ETHSWITCH_INS_90-4_0" cdc="INS" iedType="EES">
 			<DA dchg="true" name="stVal" fc="ST" bType="INT32" valKind="RO" />
 			<DA qchg="true" name="q" fc="ST" bType="Quality" valKind="RO" />
 			<DA name="t" fc="ST" bType="Timestamp" valKind="RO" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_BCR_90-4_0" cdc="BCR" iedType="EES">
@@ -599,9 +608,11 @@
 			<DA dchg="true" name="pulsQty" fc="CF" bType="FLOAT32" valKind="RO">
 				<Val>1</Val>
 			</DA>
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
-		<DOType id="HIRSCHMANN_ETHSWITCH_ING_W_0" cdc="ING" iedType="EES">
+		<DOType id="HIRSCHMANN_ETHSWITCH_ING_W_0" cdc="ENG" iedType="EES">
 			<DA name="setVal" bType="Enum" type="MauTypeKind" valKind="Set" fc="SP" />
 			<DA name="d" bType="VisString255" fc="DC" />
 			<DA name="dU" bType="VisString255" fc="DC" />
@@ -609,6 +620,8 @@
 		
 		<DOType id="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1" cdc="ING" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
+			<DA name="d" bType="VisString255" fc="DC" />
+			<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_ING_90-4_DO_0" cdc="ING" iedType="EES">
@@ -617,18 +630,26 @@
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_ING_90-4_0" cdc="ING" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="INT32" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" cdc="SPG" iedType="EES">
 			<DA dchg="true" name="setSrcRef" fc="SP" bType="ObjRef" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" cdc="SPG" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="VisString255" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<DOType id="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" cdc="SPG" iedType="EES">
 			<DA dchg="true" name="setVal" fc="SP" bType="BOOLEAN" />
+			<DA name="d" bType="VisString255" fc="DC" />
+			<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 
 		<EnumType id="HIRSCHMANN_ETHSWITCH_ctlModel_kind">
@@ -663,6 +684,8 @@
 			<DA name="stVal" bType="INT32" fc="ST" />
 			<DA name="q" bType="Quality" fc="ST" />
 			<DA name="t" bType="Timestamp" fc="ST" />
+			<DA name="d" bType="VisString255" fc="DC" />
+    		<DA name="dU" bType="VisString255" fc="DC" />
 		</DOType>
 		<DOType id="INS_Type" cdc="INS">
 			<DA name="stVal" bType="INT32" fc="ST" />

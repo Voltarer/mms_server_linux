@@ -102,7 +102,7 @@ int set_hardware_port_speed(int port_idx, int mau_type) {
         case MAU_TYPE_1000BASET_HD: speed = SPEED_1000; duplex = DUPLEX_HALF; break; 
         case MAU_TYPE_1000BASET_FD: speed = SPEED_1000; duplex = DUPLEX_FULL; break; 
         default:
-            fprintf(stderr, "[ERROR] Port %d (%s): Неподдерживаемый MAU Type %d\n", port_idx, ifr.ifr_name, mau_type);
+            printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d is non-supportable\n", mau_type);
             close(sockfd);
             return -1;
     }

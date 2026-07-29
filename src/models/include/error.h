@@ -13,7 +13,7 @@
 
 #define LOG_ERROR_DETAILED(msg) \
     do { \
-        fprintf(stderr, "[ERROR] %s (%s:%d in %s): %s\n", msg, __FILE__, __LINE__, __func__, strerror(errno)); \
+        fprintf(stderr, "[ERROR] %s (%s:%d in %s): %s\n", msg,__LINE__, __func__, strerror(errno)); \
     } while(0)
 
 // Макросы с указанием порта
@@ -24,7 +24,7 @@
 
 #define LOG_ERROR_PORT_DETAILED(port, msg) \
     do { \
-        fprintf(stderr, "[ERROR] Порт %d: %s (%s:%d in %s): %s\n", port, msg, __FILE__, __LINE__, __func__, strerror(errno)); \
+        fprintf(stderr, "[ERROR] Порт %d: %s (%s:%d in %s): %s\n", port, msg,__LINE__, __func__, strerror(errno)); \
     } while(0)
 
 // Проверки с возвратом -1 (без порта)
