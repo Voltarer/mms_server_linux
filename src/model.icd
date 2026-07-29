@@ -216,7 +216,6 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="25" doName="FlowControl" fc="ST"/>
@@ -224,7 +223,6 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="26" doName="FlowControl" fc="ST"/>
@@ -232,7 +230,6 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="27" doName="FlowControl" fc="ST"/>
@@ -240,7 +237,6 @@
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="PortNum" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="AutoNgt" fc="ST"/>							
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="Mau" fc="ST"/>
-							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="MauCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="Mtu" fc="ST"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="MtuCfg" fc="SP"/>
 							<FCDA ldInst="Bridge" lnClass="LPCP" lnInst="28" doName="FlowControl" fc="ST"/>
@@ -415,10 +411,10 @@
 					<LN lnClass="LPCP" inst="22" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>22</Val></DAI></DOI></LN>
 					<LN lnClass="LPCP" inst="23" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>23</Val></DAI></DOI></LN>
 					<LN lnClass="LPCP" inst="24" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>24</Val></DAI></DOI></LN>
-					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>25</Val></DAI></DOI></LN>
-					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>26</Val></DAI></DOI></LN>
-					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>27</Val></DAI></DOI></LN>
-					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP"><DOI name="PortNum"><DAI name="setVal"><Val>28</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="25" lnType="HIRSCHMANN_ETHSWITCH_LPCP_OPTICAL"><DOI name="PortNum"><DAI name="setVal"><Val>25</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="26" lnType="HIRSCHMANN_ETHSWITCH_LPCP_OPTICAL"><DOI name="PortNum"><DAI name="setVal"><Val>26</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="27" lnType="HIRSCHMANN_ETHSWITCH_LPCP_OPTICAL"><DOI name="PortNum"><DAI name="setVal"><Val>27</Val></DAI></DOI></LN>
+					<LN lnClass="LPCP" inst="28" lnType="HIRSCHMANN_ETHSWITCH_LPCP_OPTICAL"><DOI name="PortNum"><DAI name="setVal"><Val>28</Val></DAI></DOI></LN>
 				</LDevice>
 			</Server>
 		</AccessPoint>
@@ -502,6 +498,32 @@
 			<DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
 			<DO name="AutoNgtCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
 			<DO name="MauCfg" type="HIRSCHMANN_ETHSWITCH_ING_W_0" />
+			<DO name="AdminCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
+			<DO name="InRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" />
+		</LNodeType>
+
+		<LNodeType id="HIRSCHMANN_ETHSWITCH_LPCP_OPTICAL" lnClass="LPCP">
+			<DO name="NamPlt" type="HIRSCHMANN_ETHSWITCH_LPL_0" />
+			<DO name="ChLiv" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" />
+			<DO name="RedChLiv" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" />
+			<DO name="OutOv" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
+			<DO name="InOv" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
+			<DO name="RxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0" />
+			<DO name="TxCnt" type="HIRSCHMANN_ETHSWITCH_BCR_90-4_0" />
+			<DO name="FerPort" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0" />
+			<DO name="AutoNgt" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0" />
+			<DO name="Mau" type="INC_Type" />	
+			<DO name="Beh" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
+			<DO name="Health" type="HIRSCHMANN_ETHSWITCH_ENS_1" />
+			<DO name="Mir" type="HIRSCHMANN_ETHSWITCH_SPS_0"/>
+			<DO name="MtuCfg" type="HIRSCHMANN_ETHSWITCH_ENG_90-4_DO_1"/>
+			<DO name="Mtu" type="HIRSCHMANN_ETHSWITCH_INS_90-4_0"/>
+			<DO name="FlowControlCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0"/>
+			<DO name="FlowControl" type="HIRSCHMANN_ETHSWITCH_SPS_90-4_0"/>
+			<DO name="PortNam" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
+			<DO name="PortNum" type="HIRSCHMANN_ETHSWITCH_ING_90-4_0" />
+			<DO name="PortMac" type="HIRSCHMANN_ETHSWITCH_VSG_90-4_0" />
+			<DO name="AutoNgtCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
 			<DO name="AdminCfg" type="HIRSCHMANN_ETHSWITCH_SPG_90-4_0" />
 			<DO name="InRef" type="HIRSCHMANN_ETHSWITCH_ORG_90-4_DO_0" />
 		</LNodeType>

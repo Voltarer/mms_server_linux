@@ -130,7 +130,7 @@ static MmsDataAccessError speedWriteHandler(DataAttribute* attr, MmsValue* value
             } else if (mau_type == 9) {
                 printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10BaseT-FD) is non-supportable\n", mau_type);
             } else if (mau_type == 10) {
-                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10base-t) is non-supportable\n", mau_type);
+                printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(10Base-T) is non-supportable\n", mau_type);
             } else if (mau_type == 12) {
                 printf("MMS: [ОШИБКА] Value of MauCfg.setVal = %d(100Base-TX-FD) is non-supportable\n", mau_type);
             } else if (mau_type == 13) {
@@ -299,14 +299,16 @@ void initialize_static_port_attributes(IedServer server, int port_idx) {
     }
 
     // Скорость (конфигурация)
-    int initial_speed = get_hardware_port_speed(port_idx);
-    DataAttribute* da_speed_cfg = get_port_attr("MauCfg.setVal", port_idx);
-    if (da_speed_cfg) {
-        if (initial_speed > 0) {
-            IedServer_updateInt32AttributeValue(server, da_speed_cfg, initial_speed);
-        } else {
-            fprintf(stderr, "[WARN] Port %d (%s): Не удалось получить скорость, установлена 0\n", port_idx + 1, ifname);
-            IedServer_updateInt32AttributeValue(server, da_speed_cfg, 0);
+    if (port_idx < 24) {
+        int initial_speed = get_hardware_port_speed(port_idx);
+        DataAttribute* da_speed_cfg = get_port_attr("MauCfg.setVal", port_idx);
+        if (da_speed_cfg) {
+            if (initial_speed > 0) {
+                IedServer_updateInt32AttributeValue(server, da_speed_cfg, initial_speed);
+            } else {
+                fprintf(stderr, "[WARN] Port %d (%s): Не удалось получить скорость, установлена 0\n", port_idx + 1, ifname);
+                IedServer_updateInt32AttributeValue(server, da_speed_cfg, 0);
+            }
         }
     }
 
@@ -424,7 +426,9 @@ int main(int argc, char** argv) {
 
     for (int i = 0; i < NUM_PORTS; i++) {
         IedServer_handleWriteAccess(g_iedServer, get_port_attr("AdminCfg.setVal", i), adminCfgWriteHandler, (void*)(intptr_t)i);
-        IedServer_handleWriteAccess(g_iedServer, get_port_attr("MauCfg.setVal", i), speedWriteHandler, (void*)(intptr_t)i);
+        if (i<24){
+            IedServer_handleWriteAccess(g_iedServer, get_port_attr("MauCfg.setVal", i), speedWriteHandler, (void*)(intptr_t)i);
+        }
         IedServer_handleWriteAccess(g_iedServer, get_port_attr("AutoNgtCfg.setVal", i), autoNgtWriteHandler, (void*)(intptr_t)i);
         IedServer_handleWriteAccess(g_iedServer, get_port_attr("MtuCfg.setVal", i), mtuWriteHandler, (void*)(intptr_t)i);
         IedServer_handleWriteAccess(g_iedServer, get_port_attr("FlowControlCfg.setVal", i), flowWriteHandler, (void*)(intptr_t)i);
@@ -492,9 +496,11 @@ int main(int argc, char** argv) {
             }
 
             // Опрос железа и обновление модели (Железо -> MMS)
-            int actual_speed = get_hardware_port_speed(i);
-            if (actual_speed != -1) {
-                IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.setVal", i), (int32_t)actual_speed);
+            if (i < 24) {
+                int actual_speed = get_hardware_port_speed(i);
+                if (actual_speed != -1) {
+                    IedServer_updateInt32AttributeValue(g_iedServer, get_port_attr("MauCfg.setVal", i), (int32_t)actual_speed);
+                }
             }
 
             int autongt = get_hardware_autongt(i);
